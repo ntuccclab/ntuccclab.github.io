@@ -89,7 +89,7 @@ nav{
 .tab-btn{
   flex-shrink:0;
   font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:14px;font-weight:500;color:var(--muted);
+  font-size:15px;font-weight:500;color:var(--muted);
   background:none;border:none;cursor:pointer;
   padding:0 16px;
   border-bottom:3px solid transparent;
@@ -124,13 +124,14 @@ nav{
   font-size:24px;
   font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-.01em;
 }
-.sh-desc{font-size:14px;color:var(--mid);line-height:1.75;max-width:600px;margin-top:10px}
+.sh-em{font-weight:500;color:var(--ink)}
+.sh-desc{font-size:15px;color:var(--mid);line-height:1.75;margin-top:10px}
 
 /* ══════════════════════
    TAB 1 — HOME
 ══════════════════════ */
 /* Hero */
-.hero{background:#fff;padding:28px 0 0;overflow:hidden;border-bottom:1px solid var(--rule)}
+.hero{background:#fff;padding:28px 0 40px;overflow:hidden;border-bottom:1px solid var(--rule)}
 .hero-inner{padding-bottom:28px}
 .hero-inner{align-items:flex-start}
 .hero-inner{
@@ -225,10 +226,9 @@ h1{font-size:0;margin:0}
   border-radius:12px;background:#fff;
   transition:border-color .15s,box-shadow .15s;
 }
-.news-card:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(37,99,235,.08)}
 .news-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .news-card .news-date{margin-bottom:10px}
-.news-date{font-size:12px;color:var(--muted);font-weight:400;margin-bottom:6px;letter-spacing:.02em}
+.news-date{font-size:13px;color:var(--muted);font-weight:400;margin-bottom:6px;letter-spacing:.02em}
 .nbadge{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:11px;font-weight:700;padding:3px 9px;
@@ -238,7 +238,7 @@ h1{font-size:0;margin:0}
 .nb-pub{background:var(--blue-light);color:#1E40AF}
 .nb-event{background:var(--green-light);color:#065F46}
 .nb-news{background:#F3E8FF;color:#6B21A8}
-.news-text{font-size:14px;color:var(--mid);line-height:1.7}
+.news-text{font-size:15px;color:var(--mid);line-height:1.7}
 .news-text strong{color:var(--ink);font-weight:600}
 
 /* Recruit */
@@ -272,31 +272,40 @@ h1{font-size:0;margin:0}
 /* ══════════════════════
    TAB 2 — RESEARCH
 ══════════════════════ */
+
+.res-card{transition:opacity .2s}
+
+
+.rn-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.rn-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 14px;border:1.5px solid var(--rule);border-radius:999px;background:#fff;font-size:13px;font-weight:500;color:var(--mid);text-decoration:none;transition:border-color .15s,background .15s}
+.rn-chip:hover{border-color:#9CA3AF;background:var(--bg2)}
+.rn-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.res-card{scroll-margin-top:calc(var(--nav-h) + var(--tab-h) + 20px)}
+.res-card.flash{animation:rnflash 1.4s ease}
+@keyframes rnflash{0%,30%{box-shadow:0 0 0 3px rgba(17,24,39,.18);background:#F9FAFB}100%{box-shadow:none;background:#fff}}
 .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .res-card{
   background:#fff;border:1.5px solid var(--rule);
-  border-radius:12px;padding:36px;
+  border-radius:12px;padding:30px;
   border-left:4px solid var(--blue);
   transition:box-shadow .15s;
 }
-.res-card:hover{box-shadow:0 4px 24px rgba(37,99,235,.1)}
-.res-card:nth-child(2){border-left-color:var(--green)}
-.res-card:nth-child(3){border-left-color:var(--amber)}
-.res-card:nth-child(4){border-left-color:#7C3AED}
+.rc-green{border-left-color:var(--green)}.rc-green .res-kicker{color:var(--green)}
+.rc-amber{border-left-color:var(--amber)}.rc-amber .res-kicker{color:var(--amber)}
+.rc-purple{border-left-color:#7C3AED}.rc-purple .res-kicker{color:#7C3AED}
+.rc-cyan{border-left-color:#0891B2}.rc-cyan .res-kicker{color:#0891B2}
+.rc-rose{border-left-color:#E11D48}.rc-rose .res-kicker{color:#E11D48}
 .res-kicker{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:12px;font-weight:600;letter-spacing:.06em;
   text-transform:uppercase;color:var(--blue);margin-bottom:8px;
 }
-.res-card:nth-child(2) .res-kicker{color:var(--green)}
-.res-card:nth-child(3) .res-kicker{color:var(--amber)}
-.res-card:nth-child(4) .res-kicker{color:#7C3AED}
 .res-title{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:16px;font-weight:700;color:var(--ink);
   margin-bottom:10px;letter-spacing:-.01em;line-height:1.3;
 }
-.res-desc{font-size:14px;color:var(--mid);line-height:1.8}
+.res-desc{font-size:15px;color:var(--mid);line-height:1.8}
 .res-tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
 .res-tag{
   font-size:12px;font-weight:500;padding:5px 11px;
@@ -307,7 +316,8 @@ h1{font-size:0;margin:0}
 /* ══════════════════════
    TAB 3 — PEOPLE
 ══════════════════════ */
-.sub-tabs{display:flex;gap:8px;margin-bottom:40px}
+.sub-tabs{display:flex;gap:8px}
+.people-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .sub-btn{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:13px;font-weight:600;
@@ -326,8 +336,8 @@ h1{font-size:0;margin:0}
   display:grid;grid-template-columns:160px 1fr;gap:40px;
   align-items:start;padding:40px;
   background:#fff;border:1.5px solid var(--rule);
-  border-radius:12px;border-top:4px solid var(--blue);
-  margin-bottom:48px;
+  border-radius:12px;
+  margin-bottom:36px;
 }
 .pi-avatar{
   width:160px;height:160px;border-radius:10px;
@@ -351,59 +361,71 @@ h1{font-size:0;margin:0}
 .pi-name{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:20px;font-weight:700;color:var(--ink);
-  letter-spacing:-.01em;margin-bottom:4px;
+  letter-spacing:-.01em;margin-bottom:12px;
 }
 .pi-role{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:12px;font-weight:600;color:var(--blue);
   margin-bottom:14px;letter-spacing:.02em;
 }
-.pi-bio{font-size:14px;color:var(--mid);line-height:1.8;max-width:560px}
-.pi-email{margin-top:12px;font-size:14px}
+.pi-inst{font-weight:500;color:var(--ink)}
+.pi-bio{font-size:15px;color:var(--mid);line-height:1.8}
+.pi-email{margin-top:14px;font-size:15px;white-space:nowrap}
 .pi-email a{color:var(--blue);text-decoration:none;font-weight:500}
 .pi-email a:hover{text-decoration:underline}
 
 .mem-group-label{
   font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:13px;font-weight:700;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--muted);
+  font-size:16px;font-weight:600;letter-spacing:0;
+  color:var(--ink);
   border-bottom:1px solid var(--rule);padding-bottom:10px;
-  margin:40px 0 20px;
+  margin:36px 0 16px;
 }
 .mem-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
 .mem-card{
-  padding:20px;border:1.5px solid var(--rule);
+  padding:16px;border:1.5px solid var(--rule);
   border-radius:10px;background:#fff;
   transition:border-color .15s;
 }
-.mem-card:hover{border-color:var(--blue)}
 .mem-name{
   font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:14px;font-weight:700;color:var(--ink);
+  font-size:16px;font-weight:400;color:var(--ink);
 }
-.mem-zh{font-size:12px;color:var(--muted);margin-top:1px;margin-bottom:10px}
+.mem-zh{font-size:16px;color:var(--muted);white-space:nowrap}
+.mem-names{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
 .mem-topic{
   font-size:12px;color:var(--mid);line-height:1.65;
   border-top:1px solid var(--rule);padding-top:10px;
 }
 
+.mem-ph{width:100%;aspect-ratio:1;border-radius:8px;overflow:hidden;margin-bottom:12px;background:var(--blue-light);color:var(--blue);font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mem-ph img{width:100%;height:100%;object-fit:cover;display:block}
 .alumni-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .alum-card{
   padding:16px 18px;border:1.5px solid var(--rule);
   border-radius:8px;background:#fff;
 }
 .alum-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--ink)}
-.alum-role{font-size:13px;color:var(--mid);margin-top:3px;line-height:1.5}
+.alum-role{font-size:14px;color:var(--mid);margin-top:6px;line-height:1.55}
 .alum-year{
   display:inline-block;margin-top:6px;
-  font-size:11px;font-weight:600;color:var(--blue);
-  background:var(--blue-light);padding:2px 8px;border-radius:4px;
+  font-size:13px;font-weight:600;color:var(--blue);
+  background:var(--blue-light);padding:3px 9px;border-radius:4px;
 }
 
+
+/* LAB LIFE */
+.ll-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.ll-item{margin:0}
+.ll-photo{width:100%;aspect-ratio:4/3;border-radius:10px;overflow:hidden;background:var(--bg2);border:1.5px solid var(--rule)}
+.ll-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.ll-empty{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;border-style:dashed}
+.ll-cap{font-size:15px;color:var(--ink);margin-top:12px}
+.ll-date{font-size:14px;color:var(--muted);margin-top:2px}
 /* ══════════════════════
    TAB 4 — PUBLICATIONS
 ══════════════════════ */
-.pub-highlights{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:64px}
+.pub-highlights{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:64px}
 .pub-hl{
   padding:28px;border:1.5px solid var(--rule);
   border-radius:12px;background:#fff;
@@ -440,18 +462,17 @@ h1{font-size:0;margin:0}
   margin-bottom:14px;letter-spacing:.01em;
 }
 .pub-item{
-  display:grid;grid-template-columns:28px 1fr;gap:12px;
   padding:18px 0;border-bottom:1px solid var(--rule);
 }
 .pub-n{font-size:13px;color:var(--muted);font-weight:600;padding-top:2px}
 .pub-title{
   font-family:'Plus Jakarta Sans',sans-serif;
-  font-size:14px;font-weight:600;color:var(--ink);
-  line-height:1.5;margin-bottom:4px;letter-spacing:-.01em;
+  font-size:15px;font-weight:600;color:var(--ink);
+  line-height:1.5;margin-bottom:5px;letter-spacing:-.01em;
 }
 .pub-title a{color:inherit;text-decoration:none}
 .pub-title a:hover{color:var(--blue)}
-.pub-meta{font-size:12px;color:var(--mid)}
+.pub-meta{font-size:14px;color:var(--mid);line-height:1.6}
 .pub-journal{color:var(--blue);font-weight:500}
 .pbadge{
   font-size:10px;font-weight:700;padding:2px 7px;
@@ -470,7 +491,7 @@ h1{font-size:0;margin:0}
   font-size:12px;font-weight:700;letter-spacing:.06em;
   text-transform:uppercase;color:var(--muted);margin-bottom:6px;
 }
-.c-value{font-size:14px;color:var(--mid);line-height:1.75}
+.c-value{font-size:15px;color:var(--mid);line-height:1.75}
 .c-value a{color:var(--blue);text-decoration:none;font-weight:500}
 .c-value a:hover{text-decoration:underline}
 .c-block{margin-bottom:28px}
@@ -505,7 +526,7 @@ h1{font-size:0;margin:0}
 footer{
   background:var(--bg2);border-top:1px solid var(--rule);
   padding:14px 36px;
-  display:flex;align-items:center;justify-content:flex-start;gap:0;
+  display:flex;align-items:center;justify-content:center;gap:0;text-align:center;
 }
 .footer-brand{
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -558,6 +579,7 @@ footer{
     <button class="tab-btn" data-tab="research" onclick="switchTab('research')">Research</button>
     <button class="tab-btn" data-tab="people" onclick="switchTab('people')">People</button>
     <button class="tab-btn" data-tab="publications" onclick="switchTab('publications')">Publications</button>
+    <button class="tab-btn" data-tab="lablife" onclick="switchTab('lablife')">Lab Life</button>
     <button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">Contact</button>
   </div>
 </div>
@@ -579,26 +601,19 @@ footer{
         <img src="images/charge-carriers.png" alt="Charge carriers" style="width:280px;height:auto;object-fit:contain;display:block;align-self:flex-start">
       </div>
     </div>
-    <!-- Professor info: full width below -->
-    <div style="border-top:1px solid var(--rule);margin-top:28px;padding:20px 36px;max-width:1120px;margin-left:auto;margin-right:auto;display:flex;align-items:flex-start;justify-content:space-between">
-      <div>
-        <div style="font-size:14px;font-weight:700;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif">Prof. Chia-Chin Chen (陳嘉晉)</div>
-        <div style="font-size:14px;margin-top:3px"><a href="mailto:chiachin@ntu.edu.tw" style="color:var(--blue);text-decoration:none">chiachin@ntu.edu.tw</a></div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:14px;color:var(--ink)">Dept. of Chemical Engineering</div>
-        <div style="font-size:14px;color:var(--ink);margin-top:3px">National Taiwan University</div>
-      </div>
-    </div>
     </div>
 
   <!-- News -->
   <section class="sec sec-alt">
     <div class="w">
-      <div class="sh">
+      <div class="sh" style="margin-bottom:28px">
         <h2 class="sh-title">News</h2>
       </div>
       <div class="news-wrap">
+        <div class="news-card">
+          <div class="news-date">2026.06</div>
+          <div class="news-text">Our recent paper on impedance spectroscopy of solid-state battery electrodes published in ACS Electrochemistry.</div>
+        </div>
         <div class="news-card">
           <div class="news-date">2025.11.30</div>
           <div class="news-text">Lab members represented at 2025 TwIChE in English oral and Poster competitions.</div>
@@ -608,6 +623,10 @@ footer{
           <div class="news-text">Lab members participated in ICGET-TW 2025.</div>
         </div>
 
+        <div class="news-card">
+          <div class="news-date">2025.08</div>
+          <div class="news-text">Our recent paper on oxide hydrogenation in battery electrolytes published in ACS Energy Letters.</div>
+        </div>
         <div class="news-card">
           <div class="news-date">2025.06.13</div>
           <div class="news-text">Lab members participated in the Walsin Lihwa × NTU Engineering Research Competition.</div>
@@ -623,7 +642,7 @@ footer{
         </div>
         <div class="news-card">
           <div class="news-date">2024.09.13</div>
-          <div class="news-text">"Solvent-mediated oxide hydrogenation in layered cathodes" published in Science.</div>
+          <div class="news-text">Our recent paper on oxide hydrogenation in layered cathodes published in Science.</div>
         </div>
       </div>
     </div>
@@ -638,40 +657,46 @@ footer{
 <div class="tab-panel" id="panel-research">
   <section class="sec">
     <div class="w">
-      <div class="sh">
+      <div class="sh" style="margin-bottom:28px">
         <h2 class="sh-title">Research</h2>
-        <p class="sh-desc">We study the chemistry and physics of charge carriers in solids — ions and electrons in materials — bridging fundamental transport science and real-world materials design for energy and electronics.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:20px">
-          <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid var(--blue-mid);border-radius:6px;font-size:13px;font-weight:500;color:var(--blue)"><span style="width:7px;height:7px;border-radius:50%;background:#4285F4;flex-shrink:0"></span>Li-ion Batteries</span>
-          <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid #A7F3D0;border-radius:6px;font-size:13px;font-weight:500;color:#065F46"><span style="width:7px;height:7px;border-radius:50%;background:#059669;flex-shrink:0"></span>Semiconductor Physics</span>
-          <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid #FDE68A;border-radius:6px;font-size:13px;font-weight:500;color:#92400E"><span style="width:7px;height:7px;border-radius:50%;background:#D97706;flex-shrink:0"></span>MOF Electrodes</span>
-          <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid #DDD6FE;border-radius:6px;font-size:13px;font-weight:500;color:#5B21B6"><span style="width:7px;height:7px;border-radius:50%;background:#7C3AED;flex-shrink:0"></span>Electro-chemo-mechanical Modeling</span>
-        </div>
+        <p class="sh-desc">We study how ions and electrons move, react, and are stored in solids, and apply this understanding to batteries, semiconductor devices, and chip manufacturing. Our approach combines <strong class="sh-em">synthesis and fabrication</strong>, <strong class="sh-em">theory and modeling</strong>, and <strong class="sh-em">advanced characterization</strong>.</p>
       </div>
       <div class="res-grid">
-        <div class="res-card">
+        <div class="res-card" id="res-li">
           <div class="res-kicker">Energy Storage</div>
-          <div class="res-title">Li-ion Batteries</div>
-          <div class="res-desc">Storage capacity and charging speed are governed by charge-carrier thermodynamics and kinetics in electrode materials. We elucidate storage and transport mechanisms, and design new materials with high capacity and fast charging rates — including solid electrolytes, space charge effects, and polymer electrolytes.</div>
-          <div class="res-tags"><span class="res-tag">Electrode materials</span><span class="res-tag">Transport kinetics</span><span class="res-tag">Solid electrolytes</span><span class="res-tag">Space charge</span><span class="res-tag">Polymer electrolyte</span></div>
+          <div class="res-title">Lithium Batteries</div>
+          <div class="res-desc">Storage capacity and charging speed are governed by charge-carrier thermodynamics and kinetics in battery materials. We elucidate storage, transport, and degradation mechanisms, develop electrochemical diagnostics for cell health, and design electrode materials and solid and polymer electrolytes for high capacity, fast charging, and long cycle life.</div>
+          <div class="res-tags"><span class="res-tag">Electrode materials</span><span class="res-tag">Solid electrolytes</span><span class="res-tag">Polymer electrolyte</span><span class="res-tag">Conductive MOFs</span><span class="res-tag">Impedance</span><span class="res-tag">Degradation</span><span class="res-tag">Diagnosis</span></div>
         </div>
-        <div class="res-card">
-          <div class="res-kicker">Electronic Devices</div>
-          <div class="res-title">Semiconductor Physics</div>
-          <div class="res-desc">Device properties are governed by lattice defects. We study defect-induced reactions, diffusion processes, and phase transitions — combining theoretical modeling, thin film fabrication, and spectroscopic characterization — to develop materials for power electronics and memory applications.</div>
-          <div class="res-tags"><span class="res-tag">Defect physics</span><span class="res-tag">Phase transitions</span><span class="res-tag">Thin film</span><span class="res-tag">Spin defects</span><span class="res-tag">Chemical mechanical polishing</span></div>
+        <div class="res-card rc-green" id="res-semi">
+          <div class="res-kicker">Electronics</div>
+          <div class="res-title">Semiconductor Junctions</div>
+          <div class="res-desc">The electrical characteristics of semiconductor devices are governed by how charge carriers are distributed and trapped at junctions and defects. We combine electrical and spectroscopic characterization with modeling to study junction electrostatics, carrier concentration profiles, trap states, and defect-related reactions in materials for power electronics.</div>
+          <div class="res-tags"><span class="res-tag">Schottky junctions</span><span class="res-tag">p–n junctions</span><span class="res-tag">Electrical measurement</span><span class="res-tag">Deep-level traps</span><span class="res-tag">Thin film</span><span class="res-tag">Transport theory and modeling</span></div>
         </div>
-        <div class="res-card">
-          <div class="res-kicker">Theory &amp; Computation</div>
-          <div class="res-title">Electro-chemo-mechanical Modeling</div>
-          <div class="res-desc">We develop continuum models to understand charge carrier equilibrium, space charge effects, and transport at interfaces and in bulk mixed ionic–electronic conductors. Theory guides experimental design, and experimental results validate and refine the models.</div>
-          <div class="res-tags"><span class="res-tag">Continuum theory</span><span class="res-tag">Phase-field modeling</span><span class="res-tag">Interface thermodynamics</span><span class="res-tag">Mixed conductors</span></div>
+        <div class="res-card rc-amber" id="res-miec">
+          <div class="res-kicker">Fundamentals</div>
+          <div class="res-title">Mixed Ion–Electron Conductors</div>
+          <div class="res-desc">Ionic and electronic carriers determine how solids store charge and react with their surroundings. We combine defect chemistry and modeling with electrochemical measurements to understand charge carrier equilibria, defect–defect interactions, space charge effects, and coupled ion–electron transport under non-equilibrium conditions.</div>
+          <div class="res-tags"><span class="res-tag">Solid-state ionics</span><span class="res-tag">Defect chemistry</span><span class="res-tag">Space charge effects</span><span class="res-tag">Interfacial storage</span><span class="res-tag">Perovskite oxides</span><span class="res-tag">Layered oxides</span></div>
         </div>
-        <div class="res-card">
-          <div class="res-kicker">Materials Design</div>
-          <div class="res-title">MOFs &amp; Composite Electrodes</div>
-          <div class="res-desc">Conductive metal-organic frameworks and nanocomposites offer tunable porosity and redox-active sites for simultaneous ionic and electronic transport. We design, synthesize, and characterize MOF-based electrodes for energy storage and pseudocapacitor applications.</div>
-          <div class="res-tags"><span class="res-tag">MOF synthesis</span><span class="res-tag">Conductive MOFs</span><span class="res-tag">Pseudocapacitors</span><span class="res-tag">Interfacial storage</span></div>
+        <div class="res-card rc-rose" id="res-proc">
+          <div class="res-kicker">Electrochemical Processes</div>
+          <div class="res-title">Electrochemistry in Semiconductor Manufacturing</div>
+          <div class="res-desc">Redox reactions at solid–liquid interfaces are central to semiconductor manufacturing. We apply electrochemical principles to (electro)chemical mechanical polishing and post&#8209;CMP cleaning, and use redox potential control, guided by Pourbaix diagrams, to convert metal ions in fab wastewater into functional oxides for catalysis.</div>
+          <div class="res-tags"><span class="res-tag">E-CMP</span><span class="res-tag">Post-CMP cleaning</span><span class="res-tag">Passivation</span><span class="res-tag">Metal recovery</span><span class="res-tag">Functional oxides</span><span class="res-tag">Catalysis</span><span class="res-tag">Solid–liquid interface</span></div>
+        </div>
+        <div class="res-card rc-purple" id="res-design">
+          <div class="res-kicker">Modeling &amp; Computation</div>
+          <div class="res-title">Power Device &amp; Battery Design</div>
+          <div class="res-desc">We develop physics-based models that link materials properties to device performance, and use them to design device and electrode architectures. Current efforts include device structures for power semiconductor diodes and redox transistors, and the microstructure of composite electrodes for solid-state batteries.</div>
+          <div class="res-tags"><span class="res-tag">Diode simulation</span><span class="res-tag">TVS design</span><span class="res-tag">Transistor simulation</span><span class="res-tag">Composite electrodes</span><span class="res-tag">Thin film LIB</span><span class="res-tag">Finite element modeling</span></div>
+        </div>
+        <div class="res-card rc-cyan" id="res-char">
+          <div class="res-kicker">Advanced Characterizations</div>
+          <div class="res-title">Imaging, Spectroscopy &amp; Transport Analysis</div>
+          <div class="res-desc">We combine X-ray tomography, polarized optical microscopy, synchrotron spectroscopy and microscopy, and transport measurements, including operando experiments, to analyze materials structure, ion transport, and degradation. AI-assisted image processing and 3D reconstruction turn these data into quantitative descriptors for materials and device design.</div>
+          <div class="res-tags"><span class="res-tag">X-ray tomography</span><span class="res-tag"><i>In situ</i> optical microscopy</span><span class="res-tag">Synchrotron X-ray</span><span class="res-tag">Transport measurement</span><span class="res-tag">3D reconstruction</span><span class="res-tag">AI image analysis</span></div>
         </div>
       </div>
     </div>
@@ -683,76 +708,76 @@ footer{
 <div class="tab-panel" id="panel-people">
   <section class="sec">
     <div class="w">
-      <div class="sh">
+      <div class="sh people-head" style="margin-bottom:28px">
         <h2 class="sh-title">People</h2>
-      </div>
-
-      <div class="sub-tabs">
-        <button class="sub-btn active" data-sub="current" onclick="switchSub('current')">Current members</button>
-        <button class="sub-btn" data-sub="alumni" onclick="switchSub('alumni')">Alumni</button>
+        <div class="sub-tabs">
+          <button class="sub-btn active" data-sub="current" onclick="switchSub('current')">Current members</button>
+          <button class="sub-btn" data-sub="alumni" onclick="switchSub('alumni')">Alumni</button>
+        </div>
       </div>
 
       <!-- Current -->
       <div class="sub-panel active" id="subpanel-current">
         <div class="pi-card">
-          <div class="pi-avatar"><img src="https://static.wixstatic.com/media/9c88a2_8933cf632ef14a28955794399b8e47f4~mv2.jpg" alt="Prof. Chia-Chin Chen"></div>
+          <div>
+            <div class="pi-avatar"><img src="images/professor.png" alt="Prof. Chia-Chin Chen"></div>
+            <div class="pi-email">✉ <a href="mailto:chiachin@ntu.edu.tw">chiachin@ntu.edu.tw</a></div>
+          </div>
           <div>
             <div class="pi-name">Chia-Chin Chen (陳嘉晉)</div>
-            <div class="pi-role">Associate Professor · Department of Chemical Engineering, NTU</div>
-            <div class="pi-bio">Prof. Chen studies the electrochemistry and physics of conductive materials, focusing on charge carrier behavior in energy storage and semiconductor systems. He received his PhD from Stuttgart University / Max Planck Institute for Solid State Research, and conducted postdoctoral research at Stanford University (Chueh Group) before joining NTU in 2020.</div>
-            <div class="pi-email">✉ <a href="mailto:chiachin@ntu.edu.tw">chiachin@ntu.edu.tw</a></div>
+            <div class="pi-bio">Chia-Chin Chen is an Associate Professor in the Department of Chemical Engineering at National Taiwan University. He received his B.S. in Chemical Engineering from <strong class="pi-inst">National Taiwan University</strong> and his M.S. in Chemical Engineering from the <strong class="pi-inst">Illinois Institute of Technology</strong>. He then earned his Ph.D. in Chemistry at the <strong class="pi-inst">Max Planck Institute for Solid State Research</strong> in Germany. Before joining NTU, he was a postdoctoral fellow in the Department of Materials Science and Engineering at <strong class="pi-inst">Stanford University</strong>.<span style="display:block;margin-top:10px">His honors include the award for the Best Dissertation in Solid State Chemistry and Materials Science in Germany, the Yushan Young Scholar Fellowship from the Ministry of Education, and the NSTC 2030 Cross-Generation Young Scholars Award (Emerging Young Scholar and Excellent Young Scholar).</span></div>
           </div>
         </div>
 
-        <div class="mem-group-label">Ph.D. students</div>
+        <div class="mem-group-label">Ph.D. Students</div>
         <div class="mem-grid">
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_351712ca6d4e4b8c8a26186fd1f83421~mv2.jpg" alt="SC"><span class="mem-initials">SC</span></div><div class="mem-name">Shu-Han Chen</div><div class="mem-zh">陳書涵</div><div class="mem-topic">Phase transition and mass transport in semiconductors</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_da123b7ade1f499a8c34a2360eb6efb4~mv2.jpg" alt="HK"><span class="mem-initials">HK</span></div><div class="mem-name">Hany Khammar</div><div class="mem-zh">&nbsp;</div><div class="mem-topic">Lithium batteries</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_129c3397c1a84ddca67e58db578eab55~mv2.jpg" alt="ML"><span class="mem-initials">ML</span></div><div class="mem-name">Meng-Hua Lin</div><div class="mem-zh">林孟樺</div><div class="mem-topic">Calculation and simulation of material junction and redox transistor</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_5b3f4ba8c26a4d0b9b37864f4875ee0e~mv2.jpg" alt="LL"><span class="mem-initials">LL</span></div><div class="mem-name">Le-Yen Lin</div><div class="mem-zh">凌樂研</div><div class="mem-topic">Prediction of electrical conduction in battery materials</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_120ef99b83914654912cf185c7a7bc8f~mv2.jpg" alt="SY"><span class="mem-initials">SY</span></div><div class="mem-name">Shun-Jhih Yang</div><div class="mem-zh">楊舜智</div><div class="mem-topic">Ionic &amp; electronic conductivities of PEO-based solid electrolytes</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_391bc4fd807541e8bb418f0d4fd0c4bc~mv2.jpg" alt="CC"><span class="mem-initials">CC</span></div><div class="mem-name">Ching Chao</div><div class="mem-zh">趙敬</div><div class="mem-topic">Mechanism of chemical mechanical polishing</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_967c638acb9a45c2b64e6bd451f4053b~mv2.jpg" alt="CY"><span class="mem-initials">CY</span></div><div class="mem-name">Chun-Yen Yang</div><div class="mem-zh">楊竣硯</div><div class="mem-topic">Conductive MOFs in LIBs</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_f88734961e3e40339a30db8005008986~mv2.jpg" alt="YW"><span class="mem-initials">YW</span></div><div class="mem-name">Yu-Chi Wang</div><div class="mem-zh">王煜祺</div><div class="mem-topic">Ionic transport in polymer electrolytes</div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/shu-han-chen.jpg" alt="Shu-Han Chen"></div><div class="mem-names"><div class="mem-name">Shu-Han Chen</div><div class="mem-zh">陳書涵</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/le-yen-lin.jpg" alt="Le-Yen Lin"></div><div class="mem-names"><div class="mem-name">Le-Yen Lin</div><div class="mem-zh">凌樂研</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/chun-yen-yang.jpg" alt="Chun-Yen Yang"></div><div class="mem-names"><div class="mem-name">Chun-Yen Yang</div><div class="mem-zh">楊竣硯</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/shun-jhih-yang.jpg" alt="Shun-Jhih Yang"></div><div class="mem-names"><div class="mem-name">Shun-Jhih Yang</div><div class="mem-zh">楊舜智</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/yu-chi-wang.jpg" alt="Yu-Chi Wang"></div><div class="mem-names"><div class="mem-name">Yu-Chi Wang</div><div class="mem-zh">王煜祺</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/hany-khammar.jpg" alt="Hany Khammar"></div><div class="mem-names"><div class="mem-name">Hany Khammar</div><div class="mem-zh">&nbsp;</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/meng-hua-lin.jpg" alt="Meng-Hua Lin"></div><div class="mem-names"><div class="mem-name">Meng-Hua Lin</div><div class="mem-zh">林孟樺</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/members/ching-chao.jpg" alt="Ching Chao"></div><div class="mem-names"><div class="mem-name">Ching Chao</div><div class="mem-zh">趙敬</div></div></div>
         </div>
 
-        <div class="mem-group-label">Master students</div>
+        <div class="mem-group-label">Master Students</div>
         <div class="mem-grid">
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_e7702614f1274be2805d87651d40970e~mv2.jpg" alt="CL"><span class="mem-initials">CL</span></div><div class="mem-name">Chieh Lee</div><div class="mem-zh">李杰</div><div class="mem-topic">Coating for cathode materials in LIBs</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_1d53994c5dc84d818a76d0cc693a10c8~mv2.jpg" alt="JL"><span class="mem-initials">JL</span></div><div class="mem-name">Jia-Qi Lin</div><div class="mem-zh">林家齊</div><div class="mem-topic">Effect of binder in graphite-based anode LIB</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_d0d27ab081cb4bf3a649268bca4ab8a5~mv2.jpg" alt="TY"><span class="mem-initials">TY</span></div><div class="mem-name">Teng-Shuo Yu</div><div class="mem-zh">游騰碩</div><div class="mem-topic">Morphology control and electrical performance of MOF</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_39b2931dd5aa458c810442e2b582d604~mv2.jpg" alt="CW"><span class="mem-initials">CW</span></div><div class="mem-name">Cheng-Han Weng</div><div class="mem-zh">翁承翰</div><div class="mem-topic">Non-uniform charge carrier transport / solid-state spin defects</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_e18463bfd9df4001939ab4ec6da1d958~mv2.jpg" alt="SL"><span class="mem-initials">SL</span></div><div class="mem-name">Shang-Yung Lee</div><div class="mem-zh">李尚邕</div><div class="mem-topic">Coating for cathode materials in LIBs</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_4f8cbd3210634e24a84493af9109fba6~mv2.jpg" alt="PC"><span class="mem-initials">PC</span></div><div class="mem-name">Po-Sen Cho</div><div class="mem-zh">卓柏森</div><div class="mem-topic">Electrode microstructure and transport in LIBs</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_11887021137041398f1973e7a37dfaf7~mv2.jpg" alt="YL"><span class="mem-initials">YL</span></div><div class="mem-name">Yu-Cheng Liang</div><div class="mem-zh">梁育誠</div><div class="mem-topic">Recovery of metal ions from waste water</div></div>
-          <div class="mem-card"><div class="mem-photo-wrap"><img class="mem-photo" src="https://static.wixstatic.com/media/9c88a2_891d80b9ba874b05968af27a53f9acff~mv2.jpg" alt="CT"><span class="mem-initials">CT</span></div><div class="mem-name">Chia-Yuan Tsai</div><div class="mem-zh">蔡嘉沅</div><div class="mem-topic">Space charge in electrochemical systems</div></div>
+          <div class="mem-card"><div class="mem-ph">JQ</div><div class="mem-names"><div class="mem-name">Jia-Qi Lin</div><div class="mem-zh">林家齊</div></div></div>
+          <div class="mem-card"><div class="mem-ph">TS</div><div class="mem-names"><div class="mem-name">Teng-Shuo Yu</div><div class="mem-zh">游騰碩</div></div></div>
+          <div class="mem-card"><div class="mem-ph">CH</div><div class="mem-names"><div class="mem-name">Cheng-Han Weng</div><div class="mem-zh">翁承翰</div></div></div>
+          <div class="mem-card"><div class="mem-ph">SY</div><div class="mem-names"><div class="mem-name">Shang-Yung Lee</div><div class="mem-zh">李尚邕</div></div></div>
+          <div class="mem-card"><div class="mem-ph">YC</div><div class="mem-names"><div class="mem-name">Yu-Cheng Liang</div><div class="mem-zh">梁育誠</div></div></div>
+          <div class="mem-card"><div class="mem-ph">CY</div><div class="mem-names"><div class="mem-name">Chia-Yuan Tsai</div><div class="mem-zh">蔡嘉沅</div></div></div>
+          <div class="mem-card"><div class="mem-ph">PS</div><div class="mem-names"><div class="mem-name">Po-Sen Cho</div><div class="mem-zh">卓柏森</div></div></div>
         </div>
 
-        <div class="mem-group-label">Research assistant</div>
+        <div class="mem-group-label">Research Assistant</div>
         <div class="mem-grid">
-          <div class="mem-card"><div class="mem-name">Yu-Chieh Lo</div><div class="mem-zh">羅友捷</div><div class="mem-topic">Storage and transport mechanism of battery materials</div></div>
+          <div class="mem-card"><div class="mem-ph">YC</div><div class="mem-names"><div class="mem-name">Yu-Chieh Lo</div><div class="mem-zh">羅友捷</div></div></div>
         </div>
       </div>
 
       <!-- Alumni -->
       <div class="sub-panel" id="subpanel-alumni">
-        <div class="mem-group-label" style="margin-top:0">Master graduates</div>
+        <div class="mem-group-label" style="margin-top:0">Master Graduates</div>
         <div class="alumni-grid">
-          <div class="alum-card"><div class="alum-name">Tzu-Hao Chen 陳咨澔</div><div class="alum-role">Charge transport of MOFs</div><span class="alum-year">Master · 2020–2022</span></div>
-          <div class="alum-card"><div class="alum-name">Ming-Yen Lu 呂明彥</div><div class="alum-role">Perovskite oxide for pseudocapacitors</div><span class="alum-year">Master · 2020–2022</span></div>
-          <div class="alum-card"><div class="alum-name">Chien-Ting Yeh 葉建廷</div><div class="alum-role">Charge transport at oxide interfaces</div><span class="alum-year">Master · 2021–2023</span></div>
-          <div class="alum-card"><div class="alum-name">An-Rong Huang 黃安榕</div><div class="alum-role">Effects of point defect in MOFs</div><span class="alum-year">Master · 2022–2024</span></div>
-          <div class="alum-card"><div class="alum-name">Ting-Wei Chen 陳廷瑋</div><div class="alum-role">Characterization of deep level defects</div><span class="alum-year">Master · 2022–2024</span></div>
-          <div class="alum-card"><div class="alum-name">Yu-Chieh Lo 羅友捷</div><div class="alum-role">Mobile ions in passivation layer of p-n diode</div><span class="alum-year">Master · 2023–2025</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Chieh Lee</div><div class="mem-zh">李杰</div></div><div class="alum-role">Revealing 3D Microstructure and Electrochemical Kinetics of NCM-Based Cathode via X-ray Tomography</div><span class="alum-year">Master · 2024–2026</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Yu-Chieh Lo</div><div class="mem-zh">羅友捷</div></div><div class="alum-role">Theoretical Understanding of Mixed Ionic-Electronic Transport in Electrochemical Transistors</div><span class="alum-year">Master · 2023–2025</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Ting-Wei Chen</div><div class="mem-zh">陳廷瑋</div></div><div class="alum-role">Probing Charge Carrier Profile by Capacitance Spectroscopy: Case Study for Schottky Junction</div><span class="alum-year">Master · 2022–2024</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">An-Rong Huang</div><div class="mem-zh">黃安榕</div></div><div class="alum-role">Defect Engineering the Metal-Organic Frameworks: Strategies Towards Enhancing Mixed Proton-Electron Conductivity</div><span class="alum-year">Master · 2022–2024</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Chien-Ting Yeh</div><div class="mem-zh">葉建廷</div></div><div class="alum-role">Exploring Charge Carriers in Oxide Thin Films via Oxygen Vacancy Engineering for Diode Applications</div><span class="alum-year">Master · 2021–2023</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Ming-Yen Lu</div><div class="mem-zh">呂明彥</div></div><div class="alum-role">Charge storage in LaMnO₃ for pseudocapacitor applications</div><span class="alum-year">Master · 2020–2022</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Tzu-Hao Chen</div><div class="mem-zh">陳咨澔</div></div><div class="alum-role">Mixed Ion-Electron Conduction of Thin-Film Metal-Organic Framework</div><span class="alum-year">Master · 2020–2022</span></div>
         </div>
-        <div class="mem-group-label">Research assistants</div>
+        <div class="mem-group-label">Research Assistants</div>
         <div class="alumni-grid">
-          <div class="alum-card"><div class="alum-name">Yi Cheng 鄭苡</div><div class="alum-role">Charge transport in lithium ion batteries</div><span class="alum-year">RA · 2021–2022</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Yi Cheng</div><div class="mem-zh">鄭苡</div></div><div class="alum-role">Charge transport in lithium ion batteries</div><span class="alum-year">RA · 2021–2022</span></div>
         </div>
-        <div class="mem-group-label">Exchange students</div>
+        <div class="mem-group-label">Exchange Students</div>
         <div class="alumni-grid">
-          <div class="alum-card"><div class="alum-name">Jannik Birkholz</div><div class="alum-role">UiO-66 coating on NCM electrode · TU Munich, Germany</div><span class="alum-year">Exchange · Feb–Jul 2023</span></div>
-          <div class="alum-card"><div class="alum-name">HaoTian Yang 楊昊天</div><div class="alum-role">Electrochemical simulation of NCM cathode · Tongji University, China</div><span class="alum-year">Exchange · Feb–Jun 2024</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">HaoTian Yang</div><div class="mem-zh">楊昊天</div></div><div class="alum-role">Electrochemical simulation of NCM cathode · Tongji University, China</div><span class="alum-year">Exchange · Feb–Jun 2024</span></div>
+          <div class="alum-card"><div class="mem-names"><div class="mem-name">Jannik Birkholz</div><div class="mem-zh"></div></div><div class="alum-role">UiO-66 coating on NCM electrode · TU Munich, Germany</div><span class="alum-year">Exchange · Feb–Jul 2023</span></div>
         </div>
       </div>
     </div>
@@ -764,114 +789,80 @@ footer{
 <div class="tab-panel" id="panel-publications">
   <section class="sec sec-alt">
     <div class="w">
-      <div class="sh">
+      <div class="sh" style="margin-bottom:28px">
         <h2 class="sh-title">Publications</h2>
       </div>
 
-      <!-- Highlights -->
-      <div class="pub-highlights">
-        <div class="pub-hl">
-          <span class="pub-hl-badge j-science">Science</span>
-          <div class="pub-hl-year">2024</div>
-          <div class="pub-hl-title">Solvent-mediated oxide hydrogenation in layered cathodes</div>
-          <div class="pub-hl-meta">Wan G.*, Pollard T. P., Ma L., Schroeder M. A., Chen C. C., et al. · Science, 385(6714), 1230–1236</div>
-        </div>
-        <div class="pub-hl">
-          <span class="pub-hl-badge j-nature">Nature Materials</span>
-          <div class="pub-hl-year">2025</div>
-          <div class="pub-hl-title">Fictitious phase separation in Li layered oxides driven by electro-autocatalysis</div>
-          <div class="pub-hl-meta">Park J., Zhao H., Kang S. D., Lim K., Chen C.-C., et al. · Nat. Mater., 20, 991–999</div>
-        </div>
-        <div class="pub-hl">
-          <span class="pub-hl-badge j-nature">Nature Energy</span>
-          <div class="pub-hl-year">2018</div>
-          <div class="pub-hl-title">Decoupling electron and ion storage and the path from interfacial storage to artificial electrodes</div>
-          <div class="pub-hl-meta">Chen C.-C., Maier J. · Nature Energy, 3, 102–108</div>
-        </div>
-        <div class="pub-hl">
-          <span class="pub-hl-badge j-nature">Nature</span>
-          <div class="pub-hl-year">2016</div>
-          <div class="pub-hl-title">Synergistic, ultrafast mass storage and removal in artificial mixed conductors</div>
-          <div class="pub-hl-meta">Chen C.-C., Fu L., Maier J. · Nature, 536, 159–164</div>
-        </div>
-      </div>
-
       <!-- Full list -->
-      <div class="pub-year-block">
-        <div class="pub-year-num">2025</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">1</div><div><div class="pub-title">Hydrogenation of Oxides in Nonaqueous Battery Electrolytes and Beyond</div><div class="pub-meta">Wan G., Borodin O., Norby T., Pollard T. P., Schroeder M. A., Chen C. C.*, et al. — <span class="pub-journal">ACS Energy Letters</span>, 10, 3972–3982</div></div></div>
-          <div class="pub-item"><div class="pub-n">2</div><div><div class="pub-title">Fictitious phase separation in Li layered oxides driven by electro-autocatalysis <span class="pbadge pb-n">Nature Mater.</span></div><div class="pub-meta">Park J., Zhao H., Kang S. D., Lim K., Chen C.-C., et al. — <span class="pub-journal">Nature Materials</span>, 20, 991–999</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2024</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">3</div><div><div class="pub-title">Solvent-mediated oxide hydrogenation in layered cathodes <span class="pbadge pb-s">Science</span></div><div class="pub-meta">Wan G.*, Pollard T. P., Ma L., Schroeder M. A., Chen C. C., et al. — <span class="pub-journal">Science</span>, 385(6714), 1230–1236</div></div></div>
-          <div class="pub-item"><div class="pub-n">4</div><div><div class="pub-title">Space charge effects in mixed ionic–electronic conducting electrodes for solid-state batteries</div><div class="pub-meta">Chen S. H. &amp; Chen C. C. — <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 26(37), 24689–24698</div></div></div>
-          <div class="pub-item"><div class="pub-n">5</div><div><div class="pub-title">Accurate characterization of transference numbers in electrolyte systems</div><div class="pub-meta">Lin L. Y. &amp; Chen C. C.* — <span class="pub-journal">Journal of Power Sources</span>, 603, 234236</div></div></div>
-          <div class="pub-item"><div class="pub-n">6</div><div><div class="pub-title">High-Power Battery Electrodes Fabricated by Acupuncture-Inspired Microneedle Processing</div><div class="pub-meta">Kang C. Y., Lin L. Y., Nguyen T., Chen C. C., et al. — <span class="pub-journal">ACS Applied Materials &amp; Interfaces</span>, 16(41), 55429–55436</div></div></div>
-          <div class="pub-item"><div class="pub-n">7</div><div><div class="pub-title">Near-infrared photoelectrochromic device with graphene quantum dot modified WO₃ thin film</div><div class="pub-meta">Chang L. Y., …, Chen C. C., …, Yeh M. H.* — <span class="pub-journal">Applied Energy</span>, 361, 122930</div></div></div>
-          <div class="pub-item"><div class="pub-n">8</div><div><div class="pub-title">PET-derived linker for solvent-free and hydrothermal synthesis of BDC-based MOFs</div><div class="pub-meta">Krisbiantoro P. A., …, Yang C. Y., …, Chen C. C.*, Wu K. C.-W. — <span class="pub-journal">Materials Today Nano</span>, 100459</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2023</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">9</div><div><div class="pub-title">Intercalation of Hydrogen in Perovskite Oxide for Pseudocapacitive Energy Storage</div><div class="pub-meta">Lin M. H., Lu M. Y., Chou H. L., Wan G., &amp; Chen C. C.* — <span class="pub-journal">Chemistry of Materials</span>, 35(24), 10487–10494</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2018</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">10</div><div><div class="pub-title">Decoupling electron and ion storage and the path from interfacial storage to artificial electrodes <span class="pbadge pb-n">Nature Energy</span></div><div class="pub-meta">Chen C.-C., Maier J. — <span class="pub-journal">Nature Energy</span>, 3, 102–108</div></div></div>
-          <div class="pub-item"><div class="pub-n">11</div><div><div class="pub-title">Kinetics of space charge storage in composites</div><div class="pub-meta">Chen C.-C., Navickas E., Fleig J., Maier J. — <span class="pub-journal">Advanced Functional Materials</span>, 28, 1705999</div></div></div>
-          <div class="pub-item"><div class="pub-n">12</div><div><div class="pub-title">Space charge storage in composites: thermodynamics</div><div class="pub-meta">Chen C.-C., Maier J. — <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 19, 6379–6396</div></div></div>
-          <div class="pub-item"><div class="pub-n">13</div><div><div class="pub-title">Increased Storage through Heterogeneous Doping</div><div class="pub-meta">Chen C.-C., Maier J. — <span class="pub-journal">Chemistry of Materials</span>, 30, 5041–5049</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2017</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">14</div><div><div class="pub-title">Synergistic silver storage in the composite RbAg₄I₅:graphite — Thermodynamics and kinetics</div><div class="pub-meta">Chen C.-C., Maier J. — <span class="pub-journal">Solid State Ionics</span>, 312, 97–105</div></div></div>
-          <div class="pub-item"><div class="pub-n">15</div><div><div class="pub-title">Microscopic dynamics of Li⁺ in rutile TiO₂ revealed by ⁸Li β-Detected NMR</div><div class="pub-meta">McFadden R. M. L., …, Chen C.-C., …, MacFarlane W. A. — <span class="pub-journal">Chemistry of Materials</span></div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2016</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">16</div><div><div class="pub-title">Synergistic, ultrafast mass storage and removal in artificial mixed conductors <span class="pbadge pb-n">Nature</span></div><div class="pub-meta">Chen C.-C., Fu L., Maier J. — <span class="pub-journal">Nature</span>, 536, 159–164</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2015</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">17</div><div><div class="pub-title">Phase evolution in single-crystalline LiFePO₄ followed by in-situ scanning X-ray microscopy</div><div class="pub-meta">Ohmer N., Fenk B., Samuelis D., Chen C.-C., et al. — <span class="pub-journal">Nature Communications</span>, 6, 6045</div></div></div>
-          <div class="pub-item"><div class="pub-n">18</div><div><div class="pub-title">Nanosheets of earth-abundant jarosite as novel anodes for high-rate and long-life lithium-ion batteries</div><div class="pub-meta">Ding Y.-L., Wen Y.-R., Chen C.-C., van Aken P. A., Maier J., Yu Y. — <span class="pub-journal">ACS Applied Materials &amp; Interfaces</span>, 7(19), 10518–10524</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2014</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">19</div><div><div class="pub-title">Thermodynamics of lithium storage at abrupt junctions: Modeling and experimental evidence</div><div class="pub-meta">Fu L., Chen C.-C., Samuelis D., Maier J. — <span class="pub-journal">Physical Review Letters</span>, 112, 208301</div></div></div>
-        </div>
-      </div>
-      <div class="pub-year-block">
-        <div class="pub-year-num">2012</div>
-        <div>
-          <div class="pub-item"><div class="pub-n">20</div><div><div class="pub-title">Wetting behavior of carbon in molten carbonate</div><div class="pub-meta">Chen C.-C., Maruyama T., Hsieh P.-H., Selman J. R. — <span class="pub-journal">Journal of The Electrochemical Society</span>, 159, D597–D604</div></div></div>
-        </div>
+      <div class="pub-list">
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acselectrochem.6c00043" target="_blank" rel="noopener">Electrochemical Impedance Spectroscopy of Solid-State Battery Electrodes: A Generalized Framework for Heterogeneous Charge Transport</a></div><div class="pub-meta">L.-Y. Lin, C.-C. Chen — <span class="pub-journal">ACS Electrochemistry</span>, 2(6), 1372–1382 (2026)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acsenergylett.5c01542" target="_blank" rel="noopener">Hydrogenation of Oxides in Nonaqueous Battery Electrolytes and Beyond</a></div><div class="pub-meta">G. Wan, O. Borodin, T. Norby, T. P. Pollard, M. A. Schroeder, C.-C. Chen, et al. — <span class="pub-journal">ACS Energy Letters</span>, 10, 3972–3982 (2025)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1126/science.adg4687" target="_blank" rel="noopener">Solvent-mediated oxide hydrogenation in layered cathodes</a> <span class="pbadge pb-s">Science</span></div><div class="pub-meta">G. Wan, T. P. Pollard, L. Ma, M. A. Schroeder, C.-C. Chen, et al. — <span class="pub-journal">Science</span>, 385(6714), 1230–1236 (2024)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1039/d4cp02727b" target="_blank" rel="noopener">Space charge effects in mixed ionic–electronic conducting electrodes for solid-state batteries</a></div><div class="pub-meta">S.-H. Chen, C.-C. Chen — <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 26, 24689–24698 (2024)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.jpowsour.2024.234236" target="_blank" rel="noopener">Accurate characterization of transference numbers in electrolyte systems</a></div><div class="pub-meta">L.-Y. Lin, C.-C. Chen — <span class="pub-journal">Journal of Power Sources</span>, 603, 234236 (2024)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acsami.4c11834" target="_blank" rel="noopener">High-Power Battery Electrodes Fabricated by Acupuncture-Inspired Microneedle Processing</a></div><div class="pub-meta">C.-Y. Kang, L.-Y. Lin, T. Nguyen, C.-C. Chen, et al. — <span class="pub-journal">ACS Applied Materials &amp; Interfaces</span>, 16(41), 55429–55436 (2024)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.apenergy.2024.122930" target="_blank" rel="noopener">Near-infrared photoelectrochromic device with graphene quantum dot modified WO₃ thin film toward fast-response thermal management for self-powered agrivoltaics</a></div><div class="pub-meta">L.-Y. Chang, …, C.-C. Chen, …, M.-H. Yeh — <span class="pub-journal">Applied Energy</span>, 361, 122930 (2024)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.mtnano.2024.100459" target="_blank" rel="noopener">PET-derived bis(2-hydroxyethyl) terephthalate as a new linker source for solvent-free and hydrothermal synthesis of BDC-based MOFs</a></div><div class="pub-meta">P. A. Krisbiantoro, …, C.-Y. Yang, …, C.-C. Chen, K. C.-W. Wu — <span class="pub-journal">Materials Today Nano</span>, 100459 (2024)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acs.chemmater.3c01985" target="_blank" rel="noopener">Intercalation of Hydrogen in Perovskite Oxide for Pseudocapacitive Energy Storage</a></div><div class="pub-meta">M.-H. Lin, M.-Y. Lu, H.-L. Chou, G. Wan, C.-C. Chen — <span class="pub-journal">Chemistry of Materials</span>, 35(24), 10487–10494 (2023)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1002/ente.202201439" target="_blank" rel="noopener">A comparative study of polycrystal/single-crystal LiNi₀.₈Co₀.₁Mn₀.₁O₂ in all-solid-state Li-ion batteries with halide-based electrolyte under low stacking pressure</a></div><div class="pub-meta">H.-W. Liu, S.-K. Parthasarathi, S. Thi, Y.-T. Weng, S. Bolloju, C.-C. Chen, R.-J. Jeng, N.-L. Wu — <span class="pub-journal">Energy Technology</span> (2023)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1039/d1cp05293d" target="_blank" rel="noopener">Discrete modeling of ionic space charge zones in solids</a></div><div class="pub-meta">C. Xiao, C.-C. Chen, J. Maier — <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 24(19), 11945–11957 (2022)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1007/s10008-022-05213-y" target="_blank" rel="noopener">Reducing oxy-contaminations for enhanced Li-ion conductivity of halide-based solid electrolyte in water-mediated synthesis</a></div><div class="pub-meta">H.-W. Liu, C.-C. Lin, P.-Y. Chang, S.-C. Haw, H.-S. Sheu, J.-M. Chen, C.-C. Chen, R.-J. Jeng, N.-L. Wu — <span class="pub-journal">Journal of Solid State Electrochemistry</span>, 26(9), 2089–2096 (2022)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1038/s41563-021-00936-1" target="_blank" rel="noopener">Fictitious phase separation in Li layered oxides driven by electro-autocatalysis</a> <span class="pbadge pb-n">Nature Mater.</span></div><div class="pub-meta">J. Park, H. Zhao, S. D. Kang, K. Lim, C.-C. Chen, et al. — <span class="pub-journal">Nature Materials</span>, 20(7), 991–999 (2021)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1039/d1cp02690a" target="_blank" rel="noopener">Electro-chemo-mechanical charge carrier equilibrium at interfaces</a></div><div class="pub-meta">C.-C. Chen, Y. Yin, S. D. Kang, W. Cai, W. C. Chueh — <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 23(41), 23730–23740 (2021)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1038/s41560-017-0084-x" target="_blank" rel="noopener">Decoupling electron and ion storage and the path from interfacial storage to artificial electrodes</a> <span class="pbadge pb-n">Nature Energy</span></div><div class="pub-meta">C.-C. Chen, J. Maier — <span class="pub-journal">Nature Energy</span>, 3(2), 102–108 (2018)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1002/adfm.201705999" target="_blank" rel="noopener">Kinetics of space charge storage in composites</a></div><div class="pub-meta">C.-C. Chen, E. Navickas, J. Fleig, J. Maier — <span class="pub-journal">Advanced Functional Materials</span>, 28(15), 1705999 (2018)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acs.chemmater.8b01288" target="_blank" rel="noopener">Increased Storage through Heterogeneous Doping</a></div><div class="pub-meta">C.-C. Chen, J. Maier — <span class="pub-journal">Chemistry of Materials</span>, 30(15), 5041–5049 (2018)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.ssi.2017.09.008" target="_blank" rel="noopener">Interfacial mass storage in nanocomposites</a></div><div class="pub-meta">L. Fu, C.-C. Chen, J. Maier — <span class="pub-journal">Solid State Ionics</span>, 318, 54–59 (2018)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acs.nanolett.8b01914" target="_blank" rel="noopener">Spring-like pseudoelectroelasticity of monocrystalline Cu₂S nanowire</a></div><div class="pub-meta">Q. Zhang, Z. Shi, K. Yin, H. Dong, F. Xu, X. Peng, K. Yu, H. Zhang, C.-C. Chen, I. Valov, et al. — <span class="pub-journal">Nano Letters</span>, 18(8), 5070–5077 (2018)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1039/c6cp08134g" target="_blank" rel="noopener">Space charge storage in composites: thermodynamics</a></div><div class="pub-meta">C.-C. Chen, J. Maier — <span class="pub-journal">Physical Chemistry Chemical Physics</span>, 19(9), 6379–6396 (2017)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.ssi.2017.09.019" target="_blank" rel="noopener">Synergistic silver storage in the composite RbAg₄I₅:graphite: Thermodynamics and kinetics</a></div><div class="pub-meta">C.-C. Chen, J. Maier — <span class="pub-journal">Solid State Ionics</span>, 312, 97–105 (2017)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acs.chemmater.7b04093" target="_blank" rel="noopener">Microscopic dynamics of Li⁺ in rutile TiO₂ revealed by ⁸Li β-detected nuclear magnetic resonance</a></div><div class="pub-meta">R. M. L. McFadden, T. J. Buck, A. Chatzichristos, C.-C. Chen, et al. — <span class="pub-journal">Chemistry of Materials</span>, 29(23), 10187–10197 (2017)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acs.chemmater.7b00927" target="_blank" rel="noopener">A high power–high energy Na₃V₂(PO₄)₂F₃ sodium cathode: Investigation of transport parameters, rational design and realization</a></div><div class="pub-meta">C. Zhu, C. Wu, C.-C. Chen, P. Kopold, P. A. van Aken, J. Maier, Y. Yu — <span class="pub-journal">Chemistry of Materials</span>, 29(12), 5207–5215 (2017)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.jpowsour.2017.03.078" target="_blank" rel="noopener">Anode modeling of a molten-carbonate based direct carbon fuel cell</a></div><div class="pub-meta">C.-C. Chen, J. R. Selman — <span class="pub-journal">Journal of Power Sources</span>, 353, 312–322 (2017)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1038/nature19078" target="_blank" rel="noopener">Synergistic, ultrafast mass storage and removal in artificial mixed conductors</a> <span class="pbadge pb-n">Nature</span></div><div class="pub-meta">C.-C. Chen, L. Fu, J. Maier — <span class="pub-journal">Nature</span>, 536(7615), 159–164 (2016)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1038/ncomms7045" target="_blank" rel="noopener">Phase evolution in single-crystalline LiFePO₄ followed by in situ scanning X-ray microscopy of a micrometre-sized battery</a></div><div class="pub-meta">N. Ohmer, B. Fenk, D. Samuelis, C.-C. Chen, J. Maier, M. Weigand, E. Goering, G. Schütz — <span class="pub-journal">Nature Communications</span>, 6, 6045 (2015)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/acsami.5b01992" target="_blank" rel="noopener">Nanosheets of earth-abundant jarosite as novel anodes for high-rate and long-life lithium-ion batteries</a></div><div class="pub-meta">Y.-L. Ding, Y. Wen, C.-C. Chen, P. A. van Aken, J. Maier, Y. Yu — <span class="pub-journal">ACS Applied Materials &amp; Interfaces</span>, 7(19), 10518–10524 (2015)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.scriptamat.2015.06.003" target="_blank" rel="noopener">Unique high-temperature performance of highly condensed MnBi permanent magnets</a></div><div class="pub-meta">Y.-C. Chen, G. Gregori, A. Leineweber, F. Qu, C.-C. Chen, T. Tietze, H. Kronmüller, G. Schütz, E. Goering — <span class="pub-journal">Scripta Materialia</span>, 107, 131–135 (2015)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1103/physrevlett.112.208301" target="_blank" rel="noopener">Thermodynamics of lithium storage at abrupt junctions: Modeling and experimental evidence</a></div><div class="pub-meta">L. Fu, C.-C. Chen, D. Samuelis, J. Maier — <span class="pub-journal">Physical Review Letters</span>, 112(20), 208301 (2014)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1021/nn501945f" target="_blank" rel="noopener">Ge/C nanowires as high-capacity and long-life anode materials for Li-ion batteries</a></div><div class="pub-meta">J. Liu, K. Song, C. Zhu, C.-C. Chen, P. A. van Aken, J. Maier, Y. Yu — <span class="pub-journal">ACS Nano</span>, 8(7), 7051–7059 (2014)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1088/1742-6596/551/1/012032" target="_blank" rel="noopener">β-NMR of ⁸Li⁺ in rutile TiO₂</a></div><div class="pub-meta">R. M. L. McFadden, D. L. Cortie, D. J. Arseneau, T. J. Buck, C.-C. Chen, et al. — <span class="pub-journal">Journal of Physics: Conference Series</span>, 551, 012032 (2014)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1039/c3nr03772j" target="_blank" rel="noopener">Free-standing Ag/C coaxial hybrid electrodes as anodes for Li-ion batteries</a></div><div class="pub-meta">L. Fu, K. Tang, C.-C. Chen, L. Liu, X. Guo, Y. Yu, J. Maier — <span class="pub-journal">Nanoscale</span>, 5(23), 11568–11571 (2013)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1016/j.ijhydene.2012.06.016" target="_blank" rel="noopener">Scientific and technical maturity of molten carbonate technology</a></div><div class="pub-meta">J. R. Selman, C.-C. Chen — <span class="pub-journal">International Journal of Hydrogen Energy</span>, 37(24), 19280–19288 (2012)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1149/2.022210jes" target="_blank" rel="noopener">Wetting behavior of carbon in molten carbonate</a></div><div class="pub-meta">C.-C. Chen, T. Maruyama, P.-H. Hsieh, J. R. Selman — <span class="pub-journal">Journal of The Electrochemical Society</span>, 159(10), D597–D604 (2012)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1002/fuce.201100125" target="_blank" rel="noopener">Effect of ionic transport and separation on the meniscus in molten carbonate electrolyte</a></div><div class="pub-meta">P.-H. Hsieh, C.-C. Chen, J. R. Selman — <span class="pub-journal">Fuel Cells</span>, 12(3), 439–449 (2012)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1149/1.3505475" target="_blank" rel="noopener">The reverse Boudouard reaction in direct carbon fuel cells</a></div><div class="pub-meta">C.-C. Chen, T. Maruyama, P.-H. Hsieh, J. R. Selman — <span class="pub-journal">ECS Transactions</span>, 28(30), 227–239 (2010)</div></div>
+        <div class="pub-item"><div class="pub-title"><a href="https://doi.org/10.1149/1.3490300" target="_blank" rel="noopener">Mathematical model of carbon corrosion in a direct carbon fuel cell</a></div><div class="pub-meta">C.-C. Chen, J. R. Selman — <span class="pub-journal">ECS Transactions</span>, 28(16), 31–43 (2010)</div></div>
       </div>
     </div>
   </section>
 </div><!-- /publications -->
 
 
+<!-- ═══════════ LAB LIFE ═══════════ -->
+<div class="tab-panel" id="panel-lablife">
+  <section class="sec">
+    <div class="w">
+      <div class="sh" style="margin-bottom:28px">
+        <h2 class="sh-title">Lab Life</h2>
+      </div>
+      <div class="ll-grid">
+          <figure class="ll-item"><div class="ll-photo ll-empty">Photo</div><figcaption><div class="ll-cap">Event title</div><div class="ll-date">Month Year</div></figcaption></figure>
+          <figure class="ll-item"><div class="ll-photo ll-empty">Photo</div><figcaption><div class="ll-cap">Event title</div><div class="ll-date">Month Year</div></figcaption></figure>
+          <figure class="ll-item"><div class="ll-photo ll-empty">Photo</div><figcaption><div class="ll-cap">Event title</div><div class="ll-date">Month Year</div></figcaption></figure>
+          <figure class="ll-item"><div class="ll-photo ll-empty">Photo</div><figcaption><div class="ll-cap">Event title</div><div class="ll-date">Month Year</div></figcaption></figure>
+          <figure class="ll-item"><div class="ll-photo ll-empty">Photo</div><figcaption><div class="ll-cap">Event title</div><div class="ll-date">Month Year</div></figcaption></figure>
+          <figure class="ll-item"><div class="ll-photo ll-empty">Photo</div><figcaption><div class="ll-cap">Event title</div><div class="ll-date">Month Year</div></figcaption></figure>
+      </div>
+    </div>
+  </section>
+</div><!-- /lablife -->
+
+
 <!-- ═══════════ CONTACT ═══════════ -->
 <div class="tab-panel" id="panel-contact">
   <section class="sec">
     <div class="w">
-      <div class="sh">
+      <div class="sh" style="margin-bottom:28px">
         <h2 class="sh-title">Contact</h2>
       </div>
       <div class="contact-layout">
@@ -879,7 +870,7 @@ footer{
           <div class="c-block"><div class="c-label">Address</div><div class="c-value">R227, ChE Building I<br>National Taiwan University<br>No. 1, Sec. 4, Roosevelt Rd.<br>Da'an Dist., Taipei 106319, Taiwan</div></div>
           <div class="c-block"><div class="c-label">Email</div><div class="c-value"><a href="mailto:chiachin@ntu.edu.tw">chiachin@ntu.edu.tw</a></div></div>
           <div class="c-block"><div class="c-label">Phone</div><div class="c-value">(02) 3366-3030</div></div>
-          <div class="c-block"><div class="c-label">Department</div><div class="c-value"><a href="https://www.che.ntu.edu.tw" target="_blank" rel="noopener">Department of Chemical Engineering, NTU ↗</a></div></div>
+          <div class="c-block"><div class="c-label">Department</div><div class="c-value"><a href="https://www.che.ntu.edu.tw" target="_blank" rel="noopener">Department of Chemical Engineering<br>National Taiwan University ↗</a></div></div>
         </div>
         <div>
           <div class="map-placeholder">
@@ -889,18 +880,6 @@ footer{
         </div>
       </div>
 
-      <div class="recruit-panel">
-        <div class="recruit-panel-head">
-          <div class="recruit-panel-h">Joining the group</div>
-          <p class="recruit-panel-p">We welcome applications from candidates with backgrounds in chemistry, physics, materials science, or chemical engineering. Contact Prof. Chen at <a href="mailto:chiachin@ntu.edu.tw" style="color:var(--blue);font-weight:500">chiachin@ntu.edu.tw</a> with your CV and a brief statement of research interest.</p>
-        </div>
-        <div class="recruit-roles">
-          <div class="rr"><div class="rr-title">Postdoctoral researchers</div><div class="rr-desc">Independent project experience welcome; strong publication record preferred</div></div>
-          <div class="rr"><div class="rr-title">Ph.D. students</div><div class="rr-desc">Motivated candidates; apply through NTU ChE graduate program</div></div>
-          <div class="rr"><div class="rr-title">Master students</div><div class="rr-desc">NTU graduate program applicants with relevant background</div></div>
-          <div class="rr"><div class="rr-title">Undergraduate students</div><div class="rr-desc">Research internship and special topics projects available</div></div>
-        </div>
-      </div>
     </div>
   </section>
 </div><!-- /contact -->
@@ -908,7 +887,7 @@ footer{
 </div><!-- /page-wrap -->
 
 <footer>
-  <span class="footer-brand">Chen Group &nbsp;·&nbsp; Dept. of Chemical Engineering &nbsp;·&nbsp; National Taiwan University</span>
+  <span class="footer-brand">Chen Group &nbsp;·&nbsp; Department of Chemical Engineering &nbsp;·&nbsp; National Taiwan University</span>
 </footer>
 
 <script>
@@ -945,11 +924,20 @@ function switchSub(sub){
 }
 function readHash(){
   const h=location.hash.replace('#','');
-  const tabs=['home','research','people','publications','contact'];
+  const tabs=['home','research','people','publications','lablife','contact'];
   if(tabs.includes(h)) switchTab(h);
 }
 window.addEventListener('hashchange',readHash);
 readHash();
+
+document.querySelectorAll('.rn-chip').forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var c=document.getElementById(a.dataset.t); if(!c) return;
+    c.scrollIntoView({behavior:'smooth',block:'start'});
+    c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash');
+  });
+});
 </script>
 </body>
 </html>
