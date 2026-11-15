@@ -303,6 +303,9 @@ h1{font-size:0;margin:0}
 .res-card.flash{animation:rnflash 1.4s ease}
 @keyframes rnflash{0%,30%{box-shadow:0 0 0 3px rgba(17,24,39,.18);background:#F9FAFB}100%{box-shadow:none;background:#fff}}
 .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.res-grid .res-card{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0;align-content:start}
+.res-grid .res-card .res-heading{align-self:start}
+.res-grid .res-card .res-tags{align-self:start}
 .res-card-head{display:grid;grid-template-columns:minmax(0,1fr) 64px;align-items:center;gap:12px;margin-bottom:10px;min-height:66px}
 @media(min-width:769px) and (max-width:1000px){.res-card-head{min-height:86px}}
 .res-heading{grid-column:1;grid-row:1;min-width:0}
