@@ -131,13 +131,18 @@ nav{
    TAB 1 — HOME
 ══════════════════════ */
 /* Hero */
-.hero{background:#fff;padding:28px 0 40px;overflow:hidden;border-bottom:1px solid var(--rule)}
-.hero-inner{padding-bottom:28px}
-.hero-inner{align-items:flex-start}
+.hero{background:#fff;padding:36px 0 40px;overflow:hidden;border-bottom:1px solid var(--rule)}
 .hero-inner{
   max-width:1120px;margin:0 auto;padding:0 36px;
-  display:flex;gap:48px;align-items:stretch;
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:center;
 }
+.hero-copy{min-width:0}
+.hero-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;
+  color:var(--ink);letter-spacing:-.01em;line-height:1.4;margin:0 0 18px;
+}
+.hero-carriers{width:100%;max-width:300px;justify-self:end}
+.hero-carriers img{display:block;width:100%;height:auto}
 .hero-kicker{
   display:inline-flex;align-items:center;gap:8px;
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -148,7 +153,7 @@ nav{
 h1{font-size:0;margin:0}
 .hero-desc{
   font-size:16px;color:var(--mid);line-height:1.85;
-  max-width:720px;margin-bottom:0;
+  max-width:640px;margin-bottom:0;
 }
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
 .btn-blue{
@@ -220,15 +225,29 @@ h1{font-size:0;margin:0}
 }
 
 /* News */
-.news-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.news-card{
-  padding:24px;border:1.5px solid var(--rule);
-  border-radius:12px;background:#fff;
-  transition:border-color .15s,box-shadow .15s;
-}
+.home-news{padding:28px 0 48px;background:var(--bg2)}
+.home-news .sh{margin-bottom:24px}
+.news-wrap{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.news-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:24px;padding:19px 0;border-bottom:1px solid var(--rule)}
 .news-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.news-card .news-date{margin-bottom:10px}
-.news-date{font-size:13px;color:var(--muted);font-weight:400;margin-bottom:6px;letter-spacing:.02em}
+.news-card .news-date{margin:2px 0 0}
+.news-featured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;border-top:0}
+.news-featured .news-card{display:flex;flex-direction:column;gap:12px;padding:20px;border:1px solid var(--rule);border-radius:10px;background:#fff}
+.news-featured .news-date{margin:0}
+.news-date{font-size:14px;color:var(--muted);font-weight:400;margin-bottom:6px;letter-spacing:.02em}
+.news-archive{margin-top:22px}
+.news-archive summary{
+  display:inline-flex;align-items:center;gap:10px;list-style:none;cursor:pointer;
+  color:var(--blue-dark);font-size:14px;font-weight:500;padding:8px 0;min-height:44px;
+}
+.news-archive summary::-webkit-details-marker{display:none}
+.news-archive summary::after{content:'+';font-size:20px;font-weight:400;line-height:1}
+.news-archive[open] summary::after{content:'\2212'}
+.news-archive summary:hover{color:var(--ink)}
+.news-archive summary:focus-visible{outline:2px solid var(--blue);outline-offset:5px;border-radius:2px}
+.news-archive .news-less,.news-archive[open] .news-more{display:none}
+.news-archive[open] .news-less{display:inline}
+.news-archive .news-wrap{margin-top:16px}
 .nbadge{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:11px;font-weight:700;padding:3px 9px;
@@ -238,7 +257,7 @@ h1{font-size:0;margin:0}
 .nb-pub{background:var(--blue-light);color:#1E40AF}
 .nb-event{background:var(--green-light);color:#065F46}
 .nb-news{background:#F3E8FF;color:#6B21A8}
-.news-text{font-size:15px;color:var(--mid);line-height:1.7}
+.news-text{font-size:16px;color:var(--mid);line-height:1.7}
 .news-text strong{color:var(--ink);font-weight:600}
 
 /* Recruit */
@@ -284,6 +303,14 @@ h1{font-size:0;margin:0}
 .res-card.flash{animation:rnflash 1.4s ease}
 @keyframes rnflash{0%,30%{box-shadow:0 0 0 3px rgba(17,24,39,.18);background:#F9FAFB}100%{box-shadow:none;background:#fff}}
 .res-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.res-card-head{display:grid;grid-template-columns:minmax(0,1fr) 64px;align-items:center;gap:12px;margin-bottom:10px;min-height:66px}
+@media(min-width:769px) and (max-width:1000px){.res-card-head{min-height:86px}}
+.res-heading{grid-column:1;grid-row:1;min-width:0}
+.res-card-head .res-title{margin-bottom:0}
+.res-card-head .res-kicker{margin-bottom:6px}
+
+.res-icon{display:block;grid-column:2;grid-row:1;justify-self:end;--icon-scale:1px;width:calc(var(--icon-w) * var(--icon-scale));height:calc(var(--icon-h) * var(--icon-scale));object-fit:fill}
+@media(max-width:480px){.res-card-head{grid-template-columns:minmax(0,1fr) 56px;gap:10px}.res-icon{--icon-scale:.875px}}
 .res-card{
   background:#fff;border:1.5px solid var(--rule);
   border-radius:12px;padding:30px;
@@ -305,10 +332,10 @@ h1{font-size:0;margin:0}
   font-size:16px;font-weight:700;color:var(--ink);
   margin-bottom:10px;letter-spacing:-.01em;line-height:1.3;
 }
-.res-desc{font-size:15px;color:var(--mid);line-height:1.8}
-.res-tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:6px}
+.res-desc{font-size:15px;color:var(--mid);line-height:1.7}
+.res-tags{margin-top:12px;display:flex;flex-wrap:wrap;gap:5px}
 .res-tag{
-  font-size:12px;font-weight:500;padding:5px 11px;
+  font-size:12px;font-weight:500;padding:4px 6px;white-space:nowrap;
   border:1px solid var(--rule);color:var(--muted);
   border-radius:4px;background:var(--bg2);
 }
@@ -334,7 +361,7 @@ h1{font-size:0;margin:0}
 /* PI */
 .pi-card{
   display:grid;grid-template-columns:218px 1fr;gap:40px;
-  align-items:start;padding:40px;
+  align-items:start;padding:24px 40px;
   background:#fff;border:1.5px solid var(--rule);
   border-radius:12px;
   margin-bottom:36px;
@@ -369,8 +396,8 @@ h1{font-size:0;margin:0}
   margin-bottom:14px;letter-spacing:.02em;
 }
 .pi-inst{font-weight:500;color:var(--ink)}
-.pi-left{align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;padding-top:46px}
-.pi-left .pi-email{margin-top:14px}
+.pi-left{align-self:start;display:flex;flex-direction:column;align-items:flex-start;padding-top:12px}
+.pi-left .pi-email{margin-top:12px;width:218px;max-width:100%;text-align:center}
 .pi-bio{font-size:15px;color:var(--mid);line-height:1.8}
 .pi-email{margin-top:14px;font-size:15px;white-space:nowrap}
 .pi-email a{color:var(--blue);text-decoration:none;font-weight:500}
@@ -395,6 +422,7 @@ h1{font-size:0;margin:0}
 }
 .mem-zh{font-size:16px;color:var(--muted);white-space:nowrap}
 .mem-names{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.mem-degree{display:inline-flex;align-items:center;margin-top:8px;padding:3px 8px;border:1px solid var(--rule);border-radius:4px;background:var(--bg2);color:var(--muted);font-size:12px;font-weight:500;line-height:1.4;white-space:nowrap}
 .mem-topic{
   font-size:12px;color:var(--mid);line-height:1.65;
   border-top:1px solid var(--rule);padding-top:10px;
@@ -539,7 +567,15 @@ footer{
 /* Responsive */
 @media(max-width:768px){
   .w,.nav-inner,.hero-inner,.recruit-inner{padding-left:20px;padding-right:20px}
-  .hero-inner{grid-template-columns:1fr}
+  .hero{padding:36px 0 40px}
+  .hero-inner{grid-template-columns:1fr;gap:28px}
+  .hero-title{font-size:24px;line-height:1.4;margin-bottom:16px}
+  .hero-carriers{width:260px;max-width:100%;justify-self:center}
+  .hero-desc{line-height:1.8}
+  .home-news{padding:32px 0 36px}
+  .news-card{grid-template-columns:1fr;gap:6px;padding:17px 0}
+  .news-card .news-date{margin:0}
+  .news-archive{margin-top:16px}
   .hero-visual{display:none}
   .res-grid{grid-template-columns:1fr}
   .pi-card{grid-template-columns:1fr}
@@ -594,59 +630,62 @@ footer{
   <div class="hero">
     <div class="hero-inner">
       <!-- Left: text -->
-      <div style="flex:1">
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.3;margin-bottom:14px">Electrochemistry &amp; Semiconductor Physics Lab</div>
+      <div class="hero-copy">
+        <h1 class="hero-title">Electrochemistry &amp; Semiconductor Physics Lab</h1>
         <p class="hero-desc">We explore how ions and electrons behave in materials — from batteries that store more energy to semiconductors that push electronics further. Our group combines advanced characterizations, materials syntheses, and theoretical modeling to understand charge carrier behavior in electrochemical and semiconductor materials.</p>
       </div>
-      <!-- Right: charge carriers image -->
-      <div style="flex-shrink:0;width:280px;display:flex;align-items:center">
-        <img src="images/charge-carriers.png" alt="Charge carriers" style="width:280px;height:auto;object-fit:contain;display:block;align-self:flex-start">
+      <!-- Scalable charge-carrier diagram, without an enclosing frame -->
+      <div class="hero-carriers">
+        <img src="images/home/home-carriers.png" alt="Electrons, holes, lithium ions, oxygen vacancies, anions, and metal cations">
       </div>
     </div>
     </div>
 
   <!-- News -->
-  <section class="sec sec-alt">
+  <section class="sec home-news" aria-labelledby="home-news-title">
     <div class="w">
-      <div class="sh" style="margin-bottom:28px">
-        <h2 class="sh-title">News</h2>
+      <div class="sh">
+        <h2 class="sh-title" id="home-news-title">News</h2>
       </div>
-      <div class="news-wrap">
-        <div class="news-card">
-          <div class="news-date">2026.06</div>
+      <ol class="news-wrap news-featured" aria-label="Latest news">
+        <li class="news-card">
+          <time class="news-date" datetime="2026-06">2026.06</time>
           <div class="news-text">Our recent paper on impedance spectroscopy of solid-state battery electrodes published in ACS Electrochemistry.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.11.30</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-11-30">2025.11.30</time>
           <div class="news-text">Lab members represented at 2025 TwIChE in English oral and Poster competitions.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.11.02</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-11-02">2025.11.02</time>
           <div class="news-text">Lab members participated in ICGET-TW 2025.</div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-date">2025.08</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-08">2025.08</time>
           <div class="news-text">Our recent paper on oxide hydrogenation in battery electrolytes published in ACS Energy Letters.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.06.13</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-06-13">2025.06.13</time>
           <div class="news-text">Lab members participated in the Walsin Lihwa × NTU Engineering Research Competition.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.04.30</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-04-30">2025.04.30</time>
           <div class="news-text">Lab members participated in the NTU ChE Product Design Contest, Evergreen Scholarship 2025.</div>
-        </div>
-
-        <div class="news-card">
-          <div class="news-date">2025.01.16</div>
+        </li>
+      </ol>
+      <details class="news-archive">
+        <summary><span class="news-more">View all news</span><span class="news-less">Show less news</span></summary>
+        <ol class="news-wrap" aria-label="Earlier news">
+        <li class="news-card">
+          <time class="news-date" datetime="2025-01-16">2025.01.16</time>
           <div class="news-text">Lab member participated in the 2025 Annual Meeting of Polymer Society, Taipei.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2024.09.13</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2024-09-13">2024.09.13</time>
           <div class="news-text">Our recent paper on oxide hydrogenation in layered cathodes published in Science.</div>
-        </div>
-      </div>
+        </li>
+        </ol>
+      </details>
     </div>
   </section>
 
@@ -661,45 +700,45 @@ footer{
     <div class="w">
       <div class="sh" style="margin-bottom:28px">
         <h2 class="sh-title">Research</h2>
-        <p class="sh-desc">We study how ions and electrons move, react, and are stored in solids, and apply this understanding to batteries, semiconductor devices, and chip manufacturing. Our approach combines <strong class="sh-em">synthesis and fabrication</strong>, <strong class="sh-em">theory and modeling</strong>, and <strong class="sh-em">advanced characterization</strong>.</p>
+        <p class="sh-desc">We study how ions and electrons move, react, and are stored in solids, and apply this understanding to batteries, semiconductor devices, and chip manufacturing. Our approach combines <strong class="sh-em">synthesis and fabrication</strong>, <strong class="sh-em">experimental characterization</strong>, and <strong class="sh-em">theory and modeling</strong>.</p>
       </div>
       <div class="res-grid">
-        <div class="res-card" id="res-li">
-          <div class="res-kicker">Energy Storage</div>
-          <div class="res-title">Lithium Batteries</div>
-          <div class="res-desc">Storage capacity and charging speed are governed by charge-carrier thermodynamics and kinetics in battery materials. We elucidate storage, transport, and degradation mechanisms, develop electrochemical diagnostics for cell health, and design electrode materials and solid and polymer electrolytes for high capacity, fast charging, and long cycle life.</div>
-          <div class="res-tags"><span class="res-tag">Electrode materials</span><span class="res-tag">Solid electrolytes</span><span class="res-tag">Polymer electrolyte</span><span class="res-tag">Conductive MOFs</span><span class="res-tag">Impedance</span><span class="res-tag">Degradation</span><span class="res-tag">Diagnosis</span></div>
-        </div>
-        <div class="res-card rc-green" id="res-semi">
-          <div class="res-kicker">Electronics</div>
-          <div class="res-title">Semiconductor Junctions</div>
-          <div class="res-desc">The electrical characteristics of semiconductor devices are governed by how charge carriers are distributed and trapped at junctions and defects. We combine electrical and spectroscopic characterization with modeling to study junction electrostatics, carrier concentration profiles, trap states, and defect-related reactions in materials for power electronics.</div>
-          <div class="res-tags"><span class="res-tag">Schottky junctions</span><span class="res-tag">p–n junctions</span><span class="res-tag">Electrical measurement</span><span class="res-tag">Deep-level traps</span><span class="res-tag">Thin film</span><span class="res-tag">Transport theory and modeling</span></div>
-        </div>
-        <div class="res-card rc-amber" id="res-miec">
-          <div class="res-kicker">Fundamentals</div>
-          <div class="res-title">Mixed Ion–Electron Conductors</div>
-          <div class="res-desc">Ionic and electronic carriers determine how solids store charge and react with their surroundings. We combine defect chemistry and modeling with electrochemical measurements to understand charge carrier equilibria, defect–defect interactions, space charge effects, and coupled ion–electron transport under non-equilibrium conditions.</div>
-          <div class="res-tags"><span class="res-tag">Solid-state ionics</span><span class="res-tag">Defect chemistry</span><span class="res-tag">Space charge effects</span><span class="res-tag">Interfacial storage</span><span class="res-tag">Perovskite oxides</span><span class="res-tag">Layered oxides</span></div>
-        </div>
-        <div class="res-card rc-rose" id="res-proc">
-          <div class="res-kicker">Electrochemical Processes</div>
-          <div class="res-title">Electrochemistry in Semiconductor Manufacturing</div>
-          <div class="res-desc">Redox reactions at solid–liquid interfaces are central to semiconductor manufacturing. We apply electrochemical principles to (electro)chemical mechanical polishing and post&#8209;CMP cleaning, and use redox potential control, guided by Pourbaix diagrams, to convert metal ions in fab wastewater into functional oxides for catalysis.</div>
-          <div class="res-tags"><span class="res-tag">E-CMP</span><span class="res-tag">Post-CMP cleaning</span><span class="res-tag">Passivation</span><span class="res-tag">Metal recovery</span><span class="res-tag">Functional oxides</span><span class="res-tag">Catalysis</span><span class="res-tag">Solid–liquid interface</span></div>
-        </div>
-        <div class="res-card rc-purple" id="res-design">
-          <div class="res-kicker">Modeling &amp; Computation</div>
-          <div class="res-title">Power Device &amp; Battery Design</div>
-          <div class="res-desc">We develop physics-based models that link materials properties to device performance, and use them to design device and electrode architectures. Current efforts include device structures for power semiconductor diodes and redox transistors, and the microstructure of composite electrodes for solid-state batteries.</div>
-          <div class="res-tags"><span class="res-tag">Diode simulation</span><span class="res-tag">TVS design</span><span class="res-tag">Transistor simulation</span><span class="res-tag">Composite electrodes</span><span class="res-tag">Thin film LIB</span><span class="res-tag">Finite element modeling</span></div>
-        </div>
-        <div class="res-card rc-cyan" id="res-char">
-          <div class="res-kicker">Advanced Characterizations</div>
-          <div class="res-title">Imaging, Spectroscopy &amp; Transport Analysis</div>
-          <div class="res-desc">We combine X-ray tomography, polarized optical microscopy, synchrotron spectroscopy and microscopy, and transport measurements, including operando experiments, to analyze materials structure, ion transport, and degradation. AI-assisted image processing and 3D reconstruction turn these data into quantitative descriptors for materials and device design.</div>
-          <div class="res-tags"><span class="res-tag">X-ray tomography</span><span class="res-tag"><i>In situ</i> optical microscopy</span><span class="res-tag">Synchrotron X-ray</span><span class="res-tag">Transport measurement</span><span class="res-tag">3D reconstruction</span><span class="res-tag">AI image analysis</span></div>
-        </div>
+        <article class="res-card" id="res-li">
+          <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Energy Storage</div><h3 class="res-title">Lithium Batteries</h3></div><img class="res-icon" src="images/research/research-battery.png" style="--icon-w:56;--icon-h:32" alt="" aria-hidden="true"></div>
+          <p class="res-desc">Storage capacity and charging speed are governed by charge-carrier thermodynamics and kinetics in battery materials. We elucidate storage, transport, and degradation mechanisms, develop electrochemical diagnostics for cell health, and design electrode materials and solid and polymer electrolytes for high capacity, fast charging, and long cycle life.</p>
+          <div class="res-tags"><span class="res-tag">Electrode materials</span><span class="res-tag">Solid &amp; polymer electrolytes</span><span class="res-tag">Battery diagnosis</span></div>
+
+        </article>
+        <article class="res-card rc-green" id="res-semi">
+          <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Electronics</div><h3 class="res-title">Semiconductor Junctions</h3></div><img class="res-icon" src="images/research/research-semiconductor.png" style="--icon-w:56;--icon-h:22" alt="" aria-hidden="true"></div>
+          <p class="res-desc">The electrical characteristics of semiconductor devices are governed by how charge carriers are distributed and trapped at junctions and defects. We combine electrical and spectroscopic characterization with modeling to study junction electrostatics, carrier concentration profiles, trap states, and defect-related reactions in materials for power electronics.</p>
+          <div class="res-tags"><span class="res-tag">Schottky and p-n junctions</span><span class="res-tag">Deep-level traps</span><span class="res-tag">Charge profiling</span></div>
+
+        </article>
+        <article class="res-card rc-amber" id="res-miec">
+          <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Fundamentals</div><h3 class="res-title">Mixed Ion–Electron Conductors</h3></div><img class="res-icon" src="images/research/research-miec.png" style="--icon-w:52;--icon-h:36" alt="" aria-hidden="true"></div>
+          <p class="res-desc">Ionic and electronic carriers determine how solids store charge and react with their surroundings. We combine defect chemistry and modeling with electrochemical measurements to understand charge carrier equilibria, defect–defect interactions, space charge effects, and coupled ion–electron transport under non-equilibrium conditions.</p>
+          <div class="res-tags"><span class="res-tag">Solid-state ionics</span><span class="res-tag">Defect chemistry</span><span class="res-tag">Space charge</span><span class="res-tag">Charge transport</span></div>
+
+        </article>
+        <article class="res-card rc-rose" id="res-proc">
+          <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Electrochemical Processes</div><h3 class="res-title">Electrochemistry in Semiconductor Manufacturing</h3></div><img class="res-icon" src="images/research/research-manufacturing.png" style="--icon-w:44;--icon-h:42" alt="" aria-hidden="true"></div>
+          <p class="res-desc">Redox reactions at solid–liquid interfaces are central to semiconductor manufacturing. We apply electrochemical principles to (electro)chemical mechanical polishing and post&#8209;CMP cleaning, and use redox potential control, guided by Pourbaix diagrams, to convert metal ions in fab wastewater into functional oxides for catalysis.</p>
+          <div class="res-tags"><span class="res-tag">E-CMP</span><span class="res-tag">Post-CMP cleaning</span><span class="res-tag">Metal recovery</span><span class="res-tag">Oxide catalysis</span></div>
+
+        </article>
+        <article class="res-card rc-purple" id="res-design">
+          <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Modeling &amp; Computation</div><h3 class="res-title">Power Device &amp; Battery Design</h3></div><img class="res-icon" src="images/research/research-modeling.png" style="--icon-w:48;--icon-h:40" alt="" aria-hidden="true"></div>
+          <p class="res-desc">We develop physics-based models that link materials properties to device performance, and use them to design device and electrode architectures. Current efforts include device structures for power semiconductor diodes and redox transistors, and the microstructure of composite electrodes for solid-state batteries.</p>
+          <div class="res-tags"><span class="res-tag">Diode simulation</span><span class="res-tag">Composite electrodes</span><span class="res-tag">Finite element modeling</span></div>
+
+        </article>
+        <article class="res-card rc-cyan" id="res-char">
+          <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Advanced Characterizations</div><h3 class="res-title">Imaging, Spectroscopy &amp; Transport Analysis</h3></div><img class="res-icon" src="images/research/research-xray.png" style="--icon-w:58;--icon-h:26.1634802" alt="" aria-hidden="true"></div>
+          <p class="res-desc">We combine X-ray tomography, polarized optical microscopy, synchrotron spectroscopy and microscopy, and transport measurements, including operando experiments, to analyze materials structure, ion transport, and degradation. AI-assisted image processing and 3D reconstruction turn these data into quantitative descriptors for materials and device design.</p>
+          <div class="res-tags"><span class="res-tag">Operando characterization</span><span class="res-tag">X-ray tomography</span><span class="res-tag">AI image analysis</span></div>
+
+        </article>
       </div>
     </div>
   </section>
@@ -722,7 +761,7 @@ footer{
       <div class="sub-panel active" id="subpanel-current">
         <div class="pi-card">
           <div class="pi-left">
-            <div class="pi-avatar"><img src="images/professor.png" alt="Prof. Chia-Chin Chen"></div>
+            <div class="pi-avatar"><img src="images/people/pi/professor.png" alt="Prof. Chia-Chin Chen"></div>
             <div class="pi-email">✉ <a href="mailto:chiachin@ntu.edu.tw">chiachin@ntu.edu.tw</a></div>
           </div>
           <div>
@@ -731,27 +770,28 @@ footer{
           </div>
         </div>
 
-        <div class="mem-group-label">Ph.D. Students</div>
+        <div class="mem-group-label">Postdoctoral Researchers</div>
         <div class="mem-grid">
-          <div class="mem-card"><div class="mem-ph"><img src="members/shu-han-chen.jpg" alt="Shu-Han Chen"></div><div class="mem-names"><div class="mem-name">Shu-Han Chen</div><div class="mem-zh">陳書涵</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/le-yen-lin.jpg" alt="Le-Yen Lin"></div><div class="mem-names"><div class="mem-name">Le-Yen Lin</div><div class="mem-zh">凌樂研</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/chun-yen-yang.jpg" alt="Chun-Yen Yang"></div><div class="mem-names"><div class="mem-name">Chun-Yen Yang</div><div class="mem-zh">楊竣硯</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/shun-jhih-yang.jpg" alt="Shun-Jhih Yang"></div><div class="mem-names"><div class="mem-name">Shun-Jhih Yang</div><div class="mem-zh">楊舜智</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/yu-chi-wang.jpg" alt="Yu-Chi Wang"></div><div class="mem-names"><div class="mem-name">Yu-Chi Wang</div><div class="mem-zh">王煜祺</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/hany-khammar.jpg" alt="Hany Khammar"></div><div class="mem-names"><div class="mem-name">Hany Khammar</div><div class="mem-zh">&nbsp;</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/meng-hua-lin.jpg" alt="Meng-Hua Lin"></div><div class="mem-names"><div class="mem-name">Meng-Hua Lin</div><div class="mem-zh">林孟樺</div></div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="members/ching-chao.jpg" alt="Ching Chao"></div><div class="mem-names"><div class="mem-name">Ching Chao</div><div class="mem-zh">趙敬</div></div></div>
+          <div class="mem-card"><div class="mem-ph">IH</div><div class="mem-names"><div class="mem-name">Ibrahim Habib</div></div></div>
         </div>
 
-        <div class="mem-group-label">Master Students</div>
+        <div class="mem-group-label">Graduate Students</div>
         <div class="mem-grid">
-          <div class="mem-card"><div class="mem-ph">JQ</div><div class="mem-names"><div class="mem-name">Jia-Qi Lin</div><div class="mem-zh">林家齊</div></div></div>
-          <div class="mem-card"><div class="mem-ph">TS</div><div class="mem-names"><div class="mem-name">Teng-Shuo Yu</div><div class="mem-zh">游騰碩</div></div></div>
-          <div class="mem-card"><div class="mem-ph">CH</div><div class="mem-names"><div class="mem-name">Cheng-Han Weng</div><div class="mem-zh">翁承翰</div></div></div>
-          <div class="mem-card"><div class="mem-ph">SY</div><div class="mem-names"><div class="mem-name">Shang-Yung Lee</div><div class="mem-zh">李尚邕</div></div></div>
-          <div class="mem-card"><div class="mem-ph">YC</div><div class="mem-names"><div class="mem-name">Yu-Cheng Liang</div><div class="mem-zh">梁育誠</div></div></div>
-          <div class="mem-card"><div class="mem-ph">CY</div><div class="mem-names"><div class="mem-name">Chia-Yuan Tsai</div><div class="mem-zh">蔡嘉沅</div></div></div>
-          <div class="mem-card"><div class="mem-ph">PS</div><div class="mem-names"><div class="mem-name">Po-Sen Cho</div><div class="mem-zh">卓柏森</div></div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/shu-han-chen.jpg" alt="Shu-Han Chen"></div><div class="mem-names"><div class="mem-name">Shu-Han Chen</div><div class="mem-zh">陳書涵</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/le-yen-lin.jpg" alt="Le-Yen Lin"></div><div class="mem-names"><div class="mem-name">Le-Yen Lin</div><div class="mem-zh">凌樂研</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/chun-yen-yang.jpg" alt="Chun-Yen Yang"></div><div class="mem-names"><div class="mem-name">Chun-Yen Yang</div><div class="mem-zh">楊竣硯</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/shun-jhih-yang.jpg" alt="Shun-Jhih Yang"></div><div class="mem-names"><div class="mem-name">Shun-Jhih Yang</div><div class="mem-zh">楊舜智</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/yu-chi-wang.jpg" alt="Yu-Chi Wang"></div><div class="mem-names"><div class="mem-name">Yu-Chi Wang</div><div class="mem-zh">王煜祺</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/hany-khammar.jpg" alt="Hany Khammar"></div><div class="mem-names"><div class="mem-name">Hany Khammar</div><div class="mem-zh">&nbsp;</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/meng-hua-lin.jpg" alt="Meng-Hua Lin"></div><div class="mem-names"><div class="mem-name">Meng-Hua Lin</div><div class="mem-zh">林孟樺</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/ching-chao.jpg" alt="Ching Chao"></div><div class="mem-names"><div class="mem-name">Ching Chao</div><div class="mem-zh">趙敬</div></div><span class="mem-degree">Ph.D.</span></div>
+          <div class="mem-card"><div class="mem-ph">JQ</div><div class="mem-names"><div class="mem-name">Jia-Qi Lin</div><div class="mem-zh">林家齊</div></div><span class="mem-degree">M.S.</span></div>
+          <div class="mem-card"><div class="mem-ph">TS</div><div class="mem-names"><div class="mem-name">Teng-Shuo Yu</div><div class="mem-zh">游騰碩</div></div><span class="mem-degree">M.S.</span></div>
+          <div class="mem-card"><div class="mem-ph">CH</div><div class="mem-names"><div class="mem-name">Cheng-Han Weng</div><div class="mem-zh">翁承翰</div></div><span class="mem-degree">M.S.</span></div>
+          <div class="mem-card"><div class="mem-ph">SY</div><div class="mem-names"><div class="mem-name">Shang-Yung Lee</div><div class="mem-zh">李尚邕</div></div><span class="mem-degree">M.S.</span></div>
+          <div class="mem-card"><div class="mem-ph">YC</div><div class="mem-names"><div class="mem-name">Yu-Cheng Liang</div><div class="mem-zh">梁育誠</div></div><span class="mem-degree">M.S.</span></div>
+          <div class="mem-card"><div class="mem-ph">CY</div><div class="mem-names"><div class="mem-name">Chia-Yuan Tsai</div><div class="mem-zh">蔡嘉沅</div></div><span class="mem-degree">M.S.</span></div>
+          <div class="mem-card"><div class="mem-ph">PS</div><div class="mem-names"><div class="mem-name">Po-Sen Cho</div><div class="mem-zh">卓柏森</div></div><span class="mem-degree">M.S.</span></div>
         </div>
 
         <div class="mem-group-label">Research Assistant</div>
