@@ -131,13 +131,18 @@ nav{
    TAB 1 — HOME
 ══════════════════════ */
 /* Hero */
-.hero{background:#fff;padding:28px 0 40px;overflow:hidden;border-bottom:1px solid var(--rule)}
-.hero-inner{padding-bottom:28px}
-.hero-inner{align-items:flex-start}
+.hero{background:#fff;padding:60px 0 64px;overflow:hidden;border-bottom:1px solid var(--rule)}
 .hero-inner{
   max-width:1120px;margin:0 auto;padding:0 36px;
-  display:flex;gap:48px;align-items:stretch;
+  display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:64px;align-items:center;
 }
+.hero-copy{min-width:0}
+.hero-title{
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;
+  color:var(--ink);letter-spacing:-.01em;line-height:1.4;margin:0 0 18px;
+}
+.hero-carriers{width:100%;max-width:300px;justify-self:end}
+.hero-carriers svg{display:block;width:100%;height:auto;overflow:visible}
 .hero-kicker{
   display:inline-flex;align-items:center;gap:8px;
   font-family:'Plus Jakarta Sans',sans-serif;
@@ -148,7 +153,7 @@ nav{
 h1{font-size:0;margin:0}
 .hero-desc{
   font-size:16px;color:var(--mid);line-height:1.85;
-  max-width:720px;margin-bottom:0;
+  max-width:640px;margin-bottom:0;
 }
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
 .btn-blue{
@@ -220,15 +225,26 @@ h1{font-size:0;margin:0}
 }
 
 /* News */
-.news-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.news-card{
-  padding:24px;border:1.5px solid var(--rule);
-  border-radius:12px;background:#fff;
-  transition:border-color .15s,box-shadow .15s;
-}
+.home-news{padding:40px 0 48px;background:#fff}
+.home-news .sh{margin-bottom:24px}
+.news-wrap{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.news-card{display:grid;grid-template-columns:112px minmax(0,1fr);gap:24px;padding:19px 0;border-bottom:1px solid var(--rule)}
 .news-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.news-card .news-date{margin-bottom:10px}
+.news-card .news-date{margin:2px 0 0}
 .news-date{font-size:13px;color:var(--muted);font-weight:400;margin-bottom:6px;letter-spacing:.02em}
+.news-archive{margin-top:22px}
+.news-archive summary{
+  display:inline-flex;align-items:center;gap:10px;list-style:none;cursor:pointer;
+  color:var(--blue-dark);font-size:14px;font-weight:500;padding:8px 0;min-height:44px;
+}
+.news-archive summary::-webkit-details-marker{display:none}
+.news-archive summary::after{content:'+';font-size:20px;font-weight:400;line-height:1}
+.news-archive[open] summary::after{content:'\2212'}
+.news-archive summary:hover{color:var(--ink)}
+.news-archive summary:focus-visible{outline:2px solid var(--blue);outline-offset:5px;border-radius:2px}
+.news-archive .news-less,.news-archive[open] .news-more{display:none}
+.news-archive[open] .news-less{display:inline}
+.news-archive .news-wrap{margin-top:16px}
 .nbadge{
   font-family:'Plus Jakarta Sans',sans-serif;
   font-size:11px;font-weight:700;padding:3px 9px;
@@ -539,7 +555,15 @@ footer{
 /* Responsive */
 @media(max-width:768px){
   .w,.nav-inner,.hero-inner,.recruit-inner{padding-left:20px;padding-right:20px}
-  .hero-inner{grid-template-columns:1fr}
+  .hero{padding:36px 0 40px}
+  .hero-inner{grid-template-columns:1fr;gap:28px}
+  .hero-title{font-size:24px;line-height:1.4;margin-bottom:16px}
+  .hero-carriers{width:260px;max-width:100%;justify-self:center}
+  .hero-desc{line-height:1.8}
+  .home-news{padding:32px 0 36px}
+  .news-card{grid-template-columns:1fr;gap:6px;padding:17px 0}
+  .news-card .news-date{margin:0}
+  .news-archive{margin-top:16px}
   .hero-visual{display:none}
   .res-grid{grid-template-columns:1fr}
   .pi-card{grid-template-columns:1fr}
@@ -594,59 +618,87 @@ footer{
   <div class="hero">
     <div class="hero-inner">
       <!-- Left: text -->
-      <div style="flex:1">
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.3;margin-bottom:14px">Electrochemistry &amp; Semiconductor Physics Lab</div>
+      <div class="hero-copy">
+        <h1 class="hero-title">Electrochemistry &amp; Semiconductor Physics Lab</h1>
         <p class="hero-desc">We explore how ions and electrons behave in materials — from batteries that store more energy to semiconductors that push electronics further. Our group combines advanced characterizations, materials syntheses, and theoretical modeling to understand charge carrier behavior in electrochemical and semiconductor materials.</p>
       </div>
-      <!-- Right: charge carriers image -->
-      <div style="flex-shrink:0;width:280px;display:flex;align-items:center">
-        <img src="images/charge-carriers.png" alt="Charge carriers" style="width:280px;height:auto;object-fit:contain;display:block;align-self:flex-start">
+      <!-- Scalable charge-carrier diagram, without an enclosing frame -->
+      <div class="hero-carriers">
+        <svg viewBox="0 0 390 220" role="img" aria-labelledby="carriers-title carriers-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="carriers-title">Charge carriers</title>
+          <desc id="carriers-desc">Electrons, holes, lithium ions, doubly positively charged oxygen vacancies, anions, and metal cations.</desc>
+          <g fill="none" stroke-width="1.8">
+            <circle cx="52" cy="57" r="38" stroke="#2D67B2"/>
+            <circle cx="195" cy="57" r="38" stroke="#DF8432"/>
+            <circle cx="338" cy="57" r="38" stroke="#5B9A45"/>
+            <circle cx="52" cy="163" r="38" stroke="#713EA0"/>
+            <circle cx="195" cy="163" r="38" stroke="#C3424A"/>
+            <circle cx="338" cy="163" r="38" stroke="#2C9699"/>
+          </g>
+          <g font-family="Inter,Arial,sans-serif" font-size="32" font-weight="500" text-anchor="middle">
+            <text x="52" y="68" fill="#2D67B2">e<tspan font-size="18" baseline-shift="super">−</tspan></text>
+            <text x="195" y="68" fill="#DF8432">h<tspan font-size="18" baseline-shift="super">+</tspan></text>
+            <text x="338" y="68" fill="#5B9A45">Li<tspan font-size="18" baseline-shift="super">+</tspan></text>
+            <text x="195" y="174" fill="#C3424A">X<tspan font-size="18" baseline-shift="super">−</tspan></text>
+            <text x="338" y="174" fill="#2C9699">M<tspan font-size="18" baseline-shift="super">+</tspan></text>
+          </g>
+          <g fill="#713EA0" font-family="Inter,Arial,sans-serif" font-weight="500">
+            <text x="35" y="174" font-size="32">V</text>
+            <text x="57" y="181" font-size="14">O</text>
+            <text x="57" y="152" font-size="14" letter-spacing="1">••</text>
+          </g>
+        </svg>
       </div>
     </div>
     </div>
 
   <!-- News -->
-  <section class="sec sec-alt">
+  <section class="sec home-news" aria-labelledby="home-news-title">
     <div class="w">
-      <div class="sh" style="margin-bottom:28px">
-        <h2 class="sh-title">News</h2>
+      <div class="sh">
+        <h2 class="sh-title" id="home-news-title">News</h2>
       </div>
-      <div class="news-wrap">
-        <div class="news-card">
-          <div class="news-date">2026.06</div>
+      <ol class="news-wrap" aria-label="Latest news">
+        <li class="news-card">
+          <time class="news-date" datetime="2026-06">2026.06</time>
           <div class="news-text">Our recent paper on impedance spectroscopy of solid-state battery electrodes published in ACS Electrochemistry.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.11.30</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-11-30">2025.11.30</time>
           <div class="news-text">Lab members represented at 2025 TwIChE in English oral and Poster competitions.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.11.02</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-11-02">2025.11.02</time>
           <div class="news-text">Lab members participated in ICGET-TW 2025.</div>
-        </div>
+        </li>
 
-        <div class="news-card">
-          <div class="news-date">2025.08</div>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-08">2025.08</time>
           <div class="news-text">Our recent paper on oxide hydrogenation in battery electrolytes published in ACS Energy Letters.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.06.13</div>
+        </li>
+      </ol>
+      <details class="news-archive">
+        <summary><span class="news-more">View all news</span><span class="news-less">Show less news</span></summary>
+        <ol class="news-wrap" aria-label="Earlier news">
+        <li class="news-card">
+          <time class="news-date" datetime="2025-06-13">2025.06.13</time>
           <div class="news-text">Lab members participated in the Walsin Lihwa × NTU Engineering Research Competition.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2025.04.30</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-04-30">2025.04.30</time>
           <div class="news-text">Lab members participated in the NTU ChE Product Design Contest, Evergreen Scholarship 2025.</div>
-        </div>
+        </li>
 
-        <div class="news-card">
-          <div class="news-date">2025.01.16</div>
+        <li class="news-card">
+          <time class="news-date" datetime="2025-01-16">2025.01.16</time>
           <div class="news-text">Lab member participated in the 2025 Annual Meeting of Polymer Society, Taipei.</div>
-        </div>
-        <div class="news-card">
-          <div class="news-date">2024.09.13</div>
+        </li>
+        <li class="news-card">
+          <time class="news-date" datetime="2024-09-13">2024.09.13</time>
           <div class="news-text">Our recent paper on oxide hydrogenation in layered cathodes published in Science.</div>
-        </div>
-      </div>
+        </li>
+        </ol>
+      </details>
     </div>
   </section>
 
