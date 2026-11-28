@@ -154,7 +154,7 @@ h1{font-size:0;margin:0}
 .hero-desc{
   font-size:16px;color:var(--mid);line-height:1.85;
   max-width:640px;margin-bottom:0;
-  text-align:justify;hyphens:auto;-webkit-hyphens:auto;
+  text-align:justify;hyphens:manual;-webkit-hyphens:manual;
 }
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:52px}
 .btn-blue{
@@ -402,7 +402,7 @@ h1{font-size:0;margin:0}
 .pi-inst{font-weight:500;color:var(--ink)}
 .pi-left{align-self:start;display:flex;flex-direction:column;align-items:flex-start;padding-top:12px}
 .pi-left .pi-email{margin-top:12px;width:218px;max-width:100%;text-align:center}
-.pi-bio{font-size:16px;color:var(--mid);line-height:1.8;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.pi-bio{font-size:16px;color:var(--mid);line-height:1.8;text-align:justify;hyphens:manual;-webkit-hyphens:manual}
 .pi-email{margin-top:14px;font-size:16px;white-space:nowrap}
 .pi-email a{color:var(--blue);text-decoration:none;font-weight:500}
 .pi-email a:hover{text-decoration:underline}
@@ -456,7 +456,7 @@ h1{font-size:0;margin:0}
   .alum-card .alum-role{grid-column:2;grid-row:2}
   .alum-card .alum-year{grid-column:2;grid-row:3;justify-self:start;margin-top:6px}
 }
-.alum-card .alum-role{text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.alum-card .alum-role{text-align:justify;hyphens:manual;-webkit-hyphens:manual}
 .alum-card .mem-names{flex-direction:row;flex-wrap:nowrap;align-items:baseline;justify-content:flex-start;gap:5px;text-align:left}
 .alum-card .mem-name{font-weight:600}
 .alum-card .mem-zh{font-weight:600;color:var(--ink)}
@@ -470,7 +470,7 @@ h1{font-size:0;margin:0}
 #subpanel-current .mem-card .mem-name{font-weight:600}
 #subpanel-current .mem-card .mem-zh{font-weight:600;color:var(--ink)}
 #subpanel-current .mem-card .mem-degree{grid-column:3;grid-row:1;justify-self:end;align-self:center;margin-top:0}
-#subpanel-current .mem-card .mem-research{grid-column:2 / span 2;grid-row:2;font-size:15px;color:var(--mid);margin-top:6px;line-height:1.55;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+#subpanel-current .mem-card .mem-research{grid-column:2 / span 2;grid-row:2;font-size:15px;color:var(--mid);margin-top:6px;line-height:1.55;text-align:justify;hyphens:manual;-webkit-hyphens:manual}
 #subpanel-current .mem-card:not(:has(.mem-research)) .mem-names{grid-row:1 / span 2;align-self:center}
 #subpanel-current .mem-card:not(:has(.mem-research)) .mem-degree{grid-row:1 / span 2;align-self:center}
 @media(max-width:480px){
@@ -483,6 +483,9 @@ h1{font-size:0;margin:0}
   #subpanel-current .mem-card:not(:has(.mem-research)) .mem-degree{grid-row:2;align-self:start}
 }
 /* People 卡片樣式結束 */
+/* Research 頁面：說明文字左右對齊 */
+#panel-research .sh-desc,#panel-research .res-desc{text-align:justify;hyphens:manual;-webkit-hyphens:manual}
+.nw{white-space:nowrap}
 .alum-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:700;color:var(--ink)}
 .alum-role{font-size:15px;color:var(--mid);margin-top:6px;line-height:1.55}
 .alum-year{
@@ -653,7 +656,9 @@ footer{
 .ll-lightbox-top{display:flex;justify-content:flex-end;margin-bottom:10px}
 .ll-lightbox-close,.ll-lightbox-nav{font:500 14px/1.4 'Inter',sans-serif;border:1px solid var(--rule);background:#fff;color:var(--ink);padding:8px 14px;border-radius:6px;cursor:pointer}
 .ll-lightbox-close:hover,.ll-lightbox-nav:hover{background:var(--bg2)}
-.ll-lightbox img{display:block;width:100%;height:min(72vh,800px);object-fit:contain;background:#f4f5f7;border-radius:5px}
+.ll-stage{position:relative;overflow:hidden;border-radius:5px}
+.ll-lightbox #ll-lightbox-peek{position:absolute;top:0;left:0;pointer-events:none}
+.ll-lightbox img{display:block;width:100%;height:min(72vh,800px);object-fit:contain;background:#f4f5f7;border-radius:5px;touch-action:pan-y;-webkit-user-select:none;user-select:none;-webkit-user-drag:none;will-change:transform,opacity}
 .ll-lightbox-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:12px}
 .ll-lightbox-caption{min-width:0}
 .ll-lightbox-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:16px;font-weight:600;line-height:1.5}
@@ -803,38 +808,38 @@ footer{
       <div class="res-grid">
         <article class="res-card" id="res-li">
           <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Energy Storage</div><h3 class="res-title">Lithium Batteries</h3></div><img class="res-icon" src="images/research/research-battery.png" style="--icon-w:56;--icon-h:32" alt="" aria-hidden="true"></div>
-          <p class="res-desc">Storage capacity and charging speed are governed by charge-carrier thermodynamics and kinetics in battery materials. We elucidate storage, transport, and degradation, develop electrochemical diagnostics, and design electrode materials and solid/polymer electrolytes for high capacity, fast charging, and long cycle life.</p>
+          <p class="res-desc">Storage capacity and charging speed are governed by <span class="nw">charge-carrier</span> thermodynamics and kinetics in battery materials. We elucidate storage, transport, and degradation, develop electrochemical diagnostics, and design electrode materials and solid/polymer electrolytes for high capacity, fast charging, and long cycle life.</p>
           <div class="res-tags"><span class="res-tag">Electrode materials</span><span class="res-tag">Solid &amp; polymer electrolytes</span><span class="res-tag">Diagnosis</span></div>
 
         </article>
         <article class="res-card rc-green" id="res-semi">
           <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Electronics</div><h3 class="res-title">Semiconductor Junctions</h3></div><img class="res-icon" src="images/research/research-semiconductor.png" style="--icon-w:56;--icon-h:22" alt="" aria-hidden="true"></div>
-          <p class="res-desc">Semiconductor device characteristics are governed by how charge carriers are distributed at junctions and defects. We combine electrical and spectroscopic characterization with modeling to study junction electrostatics, carrier profiles, trap-state distributions, and defect reactions in power electronics materials.</p>
+          <p class="res-desc">Semiconductor device characteristics are governed by how charge carriers are distributed at junctions and defects. We combine electrical and spectroscopic characterization with modeling to study junction electrostatics, carrier profiles, <span class="nw">trap-state</span> distributions, and defect reactions in power electronics materials.</p>
           <div class="res-tags"><span class="res-tag">Schottky and p-n junctions</span><span class="res-tag">Deep-level traps</span><span class="res-tag">Charge profiling</span></div>
 
         </article>
         <article class="res-card rc-amber" id="res-miec">
           <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Fundamentals</div><h3 class="res-title">Mixed Ion–Electron Conductors</h3></div><img class="res-icon" src="images/research/research-miec.png" style="--icon-w:52;--icon-h:36" alt="" aria-hidden="true"></div>
-          <p class="res-desc">Ionic and electronic carriers determine how solids store charge and react with their surroundings. We combine defect chemistry and modeling with electrochemical measurements to study carrier equilibria, defect–defect interactions, space charge effects, and coupled ion–electron transport under non-equilibrium conditions.</p>
+          <p class="res-desc">Ionic and electronic carriers determine how solids store charge and react with their surroundings. We combine defect chemistry and modeling with electrochemical measurements to study carrier equilibria, <span class="nw">defect–defect</span> interactions, space charge effects, and coupled <span class="nw">ion–electron</span> transport under <span class="nw">non-equilibrium</span> conditions.</p>
           <div class="res-tags"><span class="res-tag">Solid-state ionics</span><span class="res-tag">Defect chemistry</span><span class="res-tag">Space charge</span><span class="res-tag">Transport</span></div>
 
         </article>
         <article class="res-card rc-rose" id="res-proc">
           <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Electrochemical Processes</div><h3 class="res-title">Electrochemistry in Semiconductor Manufacturing</h3></div><img class="res-icon" src="images/research/research-manufacturing.png" style="--icon-w:44;--icon-h:42" alt="" aria-hidden="true"></div>
-          <p class="res-desc">Redox reactions at solid–liquid interfaces are central to semiconductor manufacturing. We apply electrochemical principles to (electro)chemical mechanical polishing and post&#8209;CMP cleaning, and use redox potential control, guided by Pourbaix diagrams, to convert metal ions in fab wastewater into functional oxides for catalysis.</p>
+          <p class="res-desc">Redox reactions at <span class="nw">solid–liquid</span> interfaces are central to semiconductor manufacturing. We apply electrochemical principles to (electro)chemical mechanical polishing and post&#8209;CMP cleaning, and use redox potential control, guided by Pourbaix diagrams, to convert metal ions in fab wastewater into functional oxides for catalysis.</p>
           <div class="res-tags"><span class="res-tag">E-CMP</span><span class="res-tag">Post-CMP</span><span class="res-tag">Metal recovery</span><span class="res-tag">Catalysis</span><span class="res-tag">Interfaces</span></div>
 
         </article>
         <article class="res-card rc-purple" id="res-design">
           <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Modeling &amp; Computation</div><h3 class="res-title">Power Device &amp; Battery Design</h3></div><img class="res-icon" src="images/research/research-modeling.png" style="--icon-w:48;--icon-h:40" alt="" aria-hidden="true"></div>
-          <p class="res-desc">We develop physics-based models that link materials properties to device performance, and use them to design device and electrode architectures. Current efforts include device structures for power semiconductor diodes and redox transistors, and the microstructure of composite electrodes for solid-state batteries.</p>
+          <p class="res-desc">We develop <span class="nw">physics-based</span> models that link materials properties to device performance, and use them to design device and electrode architectures. Current efforts include device structures for power semiconductor diodes and redox transistors, and the microstructure of composite electrodes for <span class="nw">solid-state</span> batteries.</p>
           <div class="res-tags"><span class="res-tag">Diode simulation</span><span class="res-tag">Composite electrodes</span><span class="res-tag">Finite element modeling</span></div>
 
         </article>
         <article class="res-card rc-cyan" id="res-char">
           <div class="res-card-head"><div class="res-heading"><div class="res-kicker">Advanced Characterizations</div><h3 class="res-title">Imaging, Spectroscopy &amp; Transport Analysis</h3></div><img class="res-icon" src="images/research/research-xray.png" style="--icon-w:58;--icon-h:26.1634802" alt="" aria-hidden="true"></div>
-          <p class="res-desc">We combine X-ray tomography, polarized optical microscopy, synchrotron spectroscopy, and transport measurements, including operando experiments, to analyze structure, ion transport, and degradation. AI-assisted image processing and 3D reconstruction turn these data into descriptors for materials design.</p>
-          <div class="res-tags"><span class="res-tag">Operando characterization</span><span class="res-tag">X-ray tomography</span><span class="res-tag">AI image analysis</span></div>
+          <p class="res-desc">We combine <span class="nw">X-ray</span> tomography, polarized optical microscopy, synchrotron spectroscopy, and transport measurements, including operando experiments, to analyze structure, ion transport, and degradation. <span class="nw">AI-assisted</span> image processing and 3D reconstruction turn these data into descriptors for materials design.</p>
+          <div class="res-tags"><span class="res-tag">Operando characterization</span><span class="res-tag"><span class="nw">X-ray</span> tomography</span><span class="res-tag">AI image analysis</span></div>
 
         </article>
       </div>
@@ -864,7 +869,7 @@ footer{
           </div>
           <div>
             <div class="pi-name">Chia-Chin Chen (陳嘉晉)</div>
-            <div class="pi-bio">Chia-Chin Chen is an Associate Professor in the Department of Chemical Engineering at National Taiwan University. He received his B.S. in Chemical Engineering from <strong class="pi-inst">National Taiwan University</strong> and his M.S. in Chemical Engineering from the <strong class="pi-inst">Illinois Institute of Technology</strong>. He then earned his Ph.D. in Chemistry at the <strong class="pi-inst">Max Planck Institute for Solid State Research</strong> in Germany. Before joining NTU, he was a postdoctoral fellow in the Department of Materials Science and Engineering at <strong class="pi-inst">Stanford University</strong>.<span style="display:block;margin-top:10px">His honors include the award for the Best Dissertation in Solid State Chemistry and Materials Science in Germany, the Yushan Young Scholar Fellowship from the Ministry of Education, and the NSTC 2030 Cross-Generation Young Scholars Award (Emerging Young Scholar and Excellent Young Scholar).</span></div>
+            <div class="pi-bio"><span class="nw">Chia-Chin</span> Chen is an Associate Professor in the Department of Chemical Engineering at National Taiwan University. He received his B.S. in Chemical Engineering from <strong class="pi-inst">National Taiwan University</strong> and his M.S. in Chemical Engineering from the <strong class="pi-inst">Illinois Institute of Technology</strong>. He then earned his Ph.D. in Chemistry at the <strong class="pi-inst">Max Planck Institute for Solid State Research</strong> in Germany. Before joining NTU, he was a postdoctoral fellow in the Department of Materials Science and Engineering at <strong class="pi-inst">Stanford University</strong>.<span style="display:block;margin-top:10px">His honors include the award for the Best Dissertation in Solid State Chemistry and Materials Science in Germany, the Yushan Young Scholar Fellowship from the Ministry of Education, and the NSTC 2030 <span class="nw">Cross-Generation</span> Young Scholars Award (Emerging Young Scholar and Excellent Young Scholar).</span></div>
           </div>
         </div>
 
@@ -881,8 +886,8 @@ footer{
         <div class="mem-group-label">Ph.D. Students</div>
         <div class="mem-grid">
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/shu-han-chen.jpg" alt="Shu-Han Chen" width="320" height="240" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Shu-Han Chen</div><div class="mem-zh">(陳書涵)</div></div><div class="mem-research">Phase transition and mass transport in semiconductors</div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/chun-yen-yang.jpg" alt="Chun-Yen Yang" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Chun-Yen Yang</div><div class="mem-zh">(楊竣硯)</div></div><div class="mem-research">Unlocking Emergent Lithium Storage in Self-Reorganizing Metal-Organic Frameworks</div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/shun-jhih-yang.jpg" alt="Shun-Jhih Yang" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Shun-Jhih Yang</div><div class="mem-zh">(楊舜智)</div></div><div class="mem-research">Characterization of Ionic and Electronic Conductivities of PEO-Based Solid Electrolytes</div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/chun-yen-yang.jpg" alt="Chun-Yen Yang" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Chun-Yen Yang</div><div class="mem-zh">(楊竣硯)</div></div><div class="mem-research">Unlocking Emergent Lithium Storage in <span class="nw">Self-Reorganizing</span> <span class="nw">Metal-Organic</span> Frameworks</div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/shun-jhih-yang.jpg" alt="Shun-Jhih Yang" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Shun-Jhih Yang</div><div class="mem-zh">(楊舜智)</div></div><div class="mem-research">Characterization of Ionic and Electronic Conductivities of <span class="nw">PEO-Based</span> Solid Electrolytes</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/yu-chi-wang.jpg" alt="Yu-Chi Wang" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Yu-Chi Wang</div><div class="mem-zh">(王煜祺)</div></div><div class="mem-research">Elucidation of Ionic Transport Mechanism within Polymer Electrolyte</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/hany-khammar.jpg" alt="Hany Khammar" width="524" height="393" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Hany Khammar</div><div class="mem-zh">&nbsp;</div></div><div class="mem-research">Lithium Batteries</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/meng-hua-lin.jpg" alt="Meng-Hua Lin" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Meng-Hua Lin</div><div class="mem-zh">(林孟樺)</div></div><div class="mem-research">Calculation and simulation of material junction and redox transistor</div></div>
@@ -891,9 +896,9 @@ footer{
 
         <div class="mem-group-label">M.S. Students</div>
         <div class="mem-grid">
-          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/jia-qi-lin.jpg" alt="Jia-Qi Lin" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Jia-Qi Lin</div><div class="mem-zh">(林家齊)</div></div><div class="mem-research">Effect of Binder in graphite-based anode LIB</div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/jia-qi-lin.jpg" alt="Jia-Qi Lin" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Jia-Qi Lin</div><div class="mem-zh">(林家齊)</div></div><div class="mem-research">Effect of Binder in <span class="nw">graphite-based</span> anode LIB</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/teng-shuo-yu.jpg" alt="Teng-Shuo Yu" width="480" height="360" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Teng-Shuo Yu</div><div class="mem-zh">(游騰碩)</div></div><div class="mem-research">Morphology control and effect on electrical performance of MOF</div></div>
-          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/cheng-han-weng.jpg" alt="Cheng-Han Weng" width="580" height="435" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Cheng-Han Weng</div><div class="mem-zh">(翁承翰)</div></div><div class="mem-research">Non-uniform charge carrier transport phenomena / Solid-state spin defect electrical behavior</div></div>
+          <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/cheng-han-weng.jpg" alt="Cheng-Han Weng" width="580" height="435" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Cheng-Han Weng</div><div class="mem-zh">(翁承翰)</div></div><div class="mem-research"><span class="nw">Non-uniform</span> charge carrier transport phenomena / <span class="nw">Solid-state</span> spin defect electrical behavior</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/shang-yung-lee.jpg" alt="Shang-Yung Lee" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Shang-Yung Lee</div><div class="mem-zh">(李尚邕)</div></div><div class="mem-research">Coating for cathode material of LIBs</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/yu-cheng-liang.jpg" alt="Yu-Cheng Liang" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Yu-Cheng Liang</div><div class="mem-zh">(梁育誠)</div></div><div class="mem-research">Recovery of metal ion with different category and valent from waste water</div></div>
           <div class="mem-card"><div class="mem-ph"><img src="images/people/members/students/chia-yuan-tsai.jpg" alt="Chia-Yuan Tsai" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Chia-Yuan Tsai</div><div class="mem-zh">(蔡嘉沅)</div></div><div class="mem-research">Space charge in electrochemical system</div></div>
@@ -909,13 +914,13 @@ footer{
         </div>
         <div class="mem-group-label">M.S. Graduates</div>
         <div class="alumni-grid">
-          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/chieh-lee.jpg" alt="Chieh Lee" width="418" height="314" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Chieh Lee</div><div class="mem-zh">(李杰)</div></div><div class="alum-role">Revealing 3D Microstructure and Electrochemical Kinetics of NCM-Based Cathode via X-ray Tomography</div><span class="alum-year">2024–2026</span></div>
-          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/yu-chieh-lo.jpg" alt="Yu-Chieh Lo" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Yu-Chieh Lo</div><div class="mem-zh">(羅友捷)</div></div><div class="alum-role">Theoretical Understanding of Mixed Ionic-Electronic Transport in Electrochemical Transistors</div><span class="alum-year">2023–2025</span></div>
+          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/chieh-lee.jpg" alt="Chieh Lee" width="418" height="314" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Chieh Lee</div><div class="mem-zh">(李杰)</div></div><div class="alum-role">Revealing 3D Microstructure and Electrochemical Kinetics of <span class="nw">NCM-Based</span> Cathode via <span class="nw">X-ray</span> Tomography</div><span class="alum-year">2024–2026</span></div>
+          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/yu-chieh-lo.jpg" alt="Yu-Chieh Lo" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Yu-Chieh Lo</div><div class="mem-zh">(羅友捷)</div></div><div class="alum-role">Theoretical Understanding of Mixed <span class="nw">Ionic-Electronic</span> Transport in Electrochemical Transistors</div><span class="alum-year">2023–2025</span></div>
           <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/ting-wei-chen.jpg" alt="Ting-Wei Chen" style="object-position:100% 25%" width="800" height="600" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Ting-Wei Chen</div><div class="mem-zh">(陳廷瑋)</div></div><div class="alum-role">Probing Charge Carrier Profile by Capacitance Spectroscopy: Case Study for Schottky Junction</div><span class="alum-year">2022–2024</span></div>
-          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/an-rong-huang.jpg" alt="An-Rong Huang" width="800" height="599" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">An-Rong Huang</div><div class="mem-zh">(黃安榕)</div></div><div class="alum-role">Defect Engineering the Metal-Organic Frameworks: Strategies Towards Enhancing Mixed Proton-Electron Conductivity</div><span class="alum-year">2022–2024</span></div>
+          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/an-rong-huang.jpg" alt="An-Rong Huang" width="800" height="599" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">An-Rong Huang</div><div class="mem-zh">(黃安榕)</div></div><div class="alum-role">Defect Engineering the <span class="nw">Metal-Organic</span> Frameworks: Strategies Towards Enhancing Mixed <span class="nw">Proton-Electron</span> Conductivity</div><span class="alum-year">2022–2024</span></div>
           <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/chien-ting-yeh.jpg" alt="Chien-Ting Yeh" width="800" height="463" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Chien-Ting Yeh</div><div class="mem-zh">(葉建廷)</div></div><div class="alum-role">Exploring Charge Carriers in Oxide Thin Films via Oxygen Vacancy Engineering for Diode Applications</div><span class="alum-year">2021–2023</span></div>
           <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/ming-yen-lu.jpg" alt="Ming-Yen Lu" width="417" height="313" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Ming-Yen Lu</div><div class="mem-zh">(呂明彥)</div></div><div class="alum-role">Charge storage in LaMnO₃ for <span style="white-space:nowrap;hyphens:none">pseudocapacitor</span> applications</div><span class="alum-year">2020–2022</span></div>
-          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/tzu-hao-chen.jpg" alt="Tzu-Hao Chen" width="800" height="708" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Tzu-Hao Chen</div><div class="mem-zh">(陳咨澔)</div></div><div class="alum-role">Mixed Ion-Electron Conduction of Thin-Film Metal-Organic Framework</div><span class="alum-year">2020–2022</span></div>
+          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/tzu-hao-chen.jpg" alt="Tzu-Hao Chen" width="800" height="708" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Tzu-Hao Chen</div><div class="mem-zh">(陳咨澔)</div></div><div class="alum-role">Mixed <span class="nw">Ion-Electron</span> Conduction of <span class="nw">Thin-Film</span> <span class="nw">Metal-Organic</span> Framework</div><span class="alum-year">2020–2022</span></div>
         </div>
         <div class="mem-group-label">Research Assistants</div>
         <div class="alumni-grid">
@@ -924,7 +929,7 @@ footer{
         <div class="mem-group-label">Exchange Students</div>
         <div class="alumni-grid">
           <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/haotian-yang.jpg" alt="HaoTian Yang" width="800" height="781" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">HaoTian Yang</div><div class="mem-zh">(楊昊天)</div></div><div class="alum-role">Electrochemical simulation of NCM cathode · Tongji University, China</div><span class="alum-year">Feb–Jun 2024</span></div>
-          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/jannik-birkholz.jpg" alt="Jannik Birkholz" width="800" height="616" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Jannik Birkholz</div><div class="mem-zh"></div></div><div class="alum-role">UiO-66 coating on NCM electrode · TU Munich, Germany</div><span class="alum-year">Feb–Jul 2023</span></div>
+          <div class="alum-card"><div class="mem-ph"><img src="images/people/members/alumni/jannik-birkholz.jpg" alt="Jannik Birkholz" width="800" height="616" loading="lazy" decoding="async"></div><div class="mem-names"><div class="mem-name">Jannik Birkholz</div><div class="mem-zh"></div></div><div class="alum-role"><span class="nw">UiO-66</span> coating on NCM electrode · TU Munich, Germany</div><span class="alum-year">Feb–Jul 2023</span></div>
         </div>
       </div>
     </div>
@@ -1065,7 +1070,7 @@ document.querySelectorAll('.rn-chip').forEach(function(a){
   });
 });
 </script>
-<dialog class="ll-lightbox" id="ll-lightbox" aria-labelledby="ll-lightbox-title"><div class="ll-lightbox-top"><button class="ll-lightbox-close" type="button" onclick="labCloseAlbum()">Close</button></div><img id="ll-lightbox-image" alt=""><div class="ll-lightbox-meta"><div class="ll-lightbox-caption"><div class="ll-lightbox-title" id="ll-lightbox-title"></div><div class="ll-lightbox-date" id="ll-lightbox-date"></div></div><div class="ll-lightbox-controls" id="ll-lightbox-controls"><button class="ll-lightbox-nav" type="button" aria-label="Previous photo" onclick="labMovePhoto(-1)">Previous</button><span class="ll-lightbox-position" id="ll-lightbox-position" aria-live="polite"></span><button class="ll-lightbox-nav" type="button" aria-label="Next photo" onclick="labMovePhoto(1)">Next</button></div></div></dialog>
+<dialog class="ll-lightbox" id="ll-lightbox" aria-labelledby="ll-lightbox-title"><div class="ll-lightbox-top"><button class="ll-lightbox-close" type="button" onclick="labCloseAlbum()">Close</button></div><div class="ll-stage"><img id="ll-lightbox-image" alt=""><img id="ll-lightbox-peek" alt="" aria-hidden="true" hidden></div><div class="ll-lightbox-meta"><div class="ll-lightbox-caption"><div class="ll-lightbox-title" id="ll-lightbox-title"></div><div class="ll-lightbox-date" id="ll-lightbox-date"></div></div><div class="ll-lightbox-controls" id="ll-lightbox-controls"><button class="ll-lightbox-nav" type="button" aria-label="Previous photo" onclick="labSlide(-1)">Previous</button><span class="ll-lightbox-position" id="ll-lightbox-position" aria-live="polite"></span><button class="ll-lightbox-nav" type="button" aria-label="Next photo" onclick="labSlide(1)">Next</button></div></div></dialog>
 <script id="lab-life-script">const LAB_LIFE_ALBUMS={"lab-gathering-2026":{"id":"lab-gathering-2026","title":"Farewell Party for Le-Yen and Chieh Lee","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/lab-gathering-2026.jpg","thumb":"images/lab-life/lab-gathering-2026.jpg","alt":"Farewell Party for Le-Yen and Chieh Lee","image_index":0,"width":1200,"height":900}]},"ise-42nd-topical-2026":{"id":"ise-42nd-topical-2026","title":"ISE 42nd Topical Meeting, Helsinki","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/ise-42nd-topical-2026.jpg","thumb":"images/lab-life/ise-42nd-topical-2026.jpg","alt":"ISE 42nd Topical Meeting, Helsinki","image_index":41,"width":1600,"height":1200},{"src":"images/lab-life/ise-42nd-topical-2026-02.jpg","thumb":"images/lab-life/ise-42nd-topical-2026-02.jpg","alt":"ISE 42nd Topical Meeting, Helsinki","image_index":42,"width":1600,"height":1200}]},"ssi-25-2026":{"id":"ssi-25-2026","title":"SSI-25, Singapore","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/ssi-25-2026.jpg","thumb":"images/lab-life/ssi-25-2026.jpg","alt":"SSI-25, Singapore","image_index":0,"width":1200,"height":903},{"src":"images/lab-life/ssi-25-2026-02.jpg","thumb":"images/lab-life/ssi-25-2026-02.jpg","alt":"SSI-25, Singapore","image_index":39,"width":1600,"height":1205},{"src":"images/lab-life/ssi-25-2026-03.jpg","thumb":"images/lab-life/ssi-25-2026-03.jpg","alt":"SSI-25, Singapore","image_index":40,"width":1477,"height":1108}]},"icget-tw-2026":{"id":"icget-tw-2026","title":"ICGET-Tw Annual Conference","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/icget-tw-2026.jpg","thumb":"images/lab-life/icget-tw-2026.jpg","alt":"ICGET-Tw Annual Conference","image_index":0,"width":1200,"height":900},{"src":"images/lab-life/icget-tw-2026-02.jpg","thumb":"images/lab-life/icget-tw-2026-02.jpg","alt":"ICGET-Tw Annual Conference","image_index":36,"width":1600,"height":1200},{"src":"images/lab-life/icget-tw-2026-03.jpg","thumb":"images/lab-life/icget-tw-2026-03.jpg","alt":"ICGET-Tw Annual Conference","image_index":37,"width":1600,"height":1200},{"src":"images/lab-life/icget-tw-2026-04.jpg","thumb":"images/lab-life/icget-tw-2026-04.jpg","alt":"ICGET-Tw Annual Conference","image_index":38,"width":1600,"height":1200}]},"teachers-day-2026":{"id":"teachers-day-2026","title":"Teachers Day 2026","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/teachers-day-2026.jpg","thumb":"images/lab-life/teachers-day-2026.jpg","alt":"Teachers Day 2026","image_index":0,"width":1200,"height":900}]},"birthday-gift-exchange-2024":{"id":"birthday-gift-exchange-2024","title":"Teacher's Special Day","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/birthday-gift-exchange-2024.jpg","thumb":"images/lab-life/birthday-gift-exchange-2024.jpg","alt":"Teacher's Special Day","image_index":0,"width":1200,"height":899}]},"gift-exchange-2024":{"id":"gift-exchange-2024","title":"Christmas Gathering","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/gift-exchange-2024.jpg","thumb":"images/lab-life/gift-exchange-2024.jpg","alt":"Christmas Gathering","image_index":0,"width":1200,"height":903}]},"kindergarten-visit-2026":{"id":"kindergarten-visit-2026","title":"Kindergarten Visit","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/kindergarten-visit-2026-19.jpg","thumb":"images/lab-life/kindergarten-visit-2026-19.jpg","alt":"Kindergarten Visit","image_index":18,"width":1600,"height":1200}]},"year-end-gathering-2026":{"id":"year-end-gathering-2026","title":"Lab Gathering","year":2026,"date_label":"2026","photos":[{"src":"images/lab-life/year-end-gathering-2026-02.jpg","thumb":"images/lab-life/year-end-gathering-2026-02.jpg","alt":"Lab Gathering","image_index":1,"width":1600,"height":1200}]},"christmas-party-2025":{"id":"christmas-party-2025","title":"Christmas Party","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/christmas-party-2025-20.jpg","thumb":"images/lab-life/christmas-party-2025-20.jpg","alt":"Christmas Party","image_index":19,"width":1600,"height":1205}]},"twiche-2025":{"id":"twiche-2025","title":"TwIChE Annual Conference","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/twiche-2025-03.jpg","thumb":"images/lab-life/twiche-2025-03.jpg","alt":"TwIChE Annual Conference","image_index":2,"width":1600,"height":1200}]},"icget-tw-2025":{"id":"icget-tw-2025","title":"ICGET-Tw Annual Conference","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/icget-tw-2025-22.jpg","thumb":"images/lab-life/icget-tw-2025-22.jpg","alt":"ICGET-Tw Annual Conference","image_index":21,"width":1600,"height":1200},{"src":"images/lab-life/icget-tw-2025-21.jpg","thumb":"images/lab-life/icget-tw-2025-21.jpg","alt":"ICGET-Tw Annual Conference","image_index":20,"width":1600,"height":1200}]},"yu-chieh-farewell-2025":{"id":"yu-chieh-farewell-2025","title":"Farewell Party for Yu-Chieh","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/yu-chieh-farewell-2025-05.jpg","thumb":"images/lab-life/yu-chieh-farewell-2025-05.jpg","alt":"Farewell Party for Yu-Chieh","image_index":4,"width":1600,"height":1205}]},"teachers-day-promotion-2025":{"id":"teachers-day-promotion-2025","title":"Teachers' Day & Promotion Celebration","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/teachers-day-promotion-2025-23.jpg","thumb":"images/lab-life/teachers-day-promotion-2025-23.jpg","alt":"Teachers' Day & Promotion Celebration","image_index":22,"width":1600,"height":1200}]},"spring-retreat-2025":{"id":"spring-retreat-2025","title":"Spring Group Retreat","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/spring-retreat-2025-07.jpg","thumb":"images/lab-life/spring-retreat-2025-07.jpg","alt":"Spring Group Retreat","image_index":6,"width":1600,"height":1200}]},"polymer-society-taipei-2025":{"id":"polymer-society-taipei-2025","title":"Annual Meeting of the Polymer Society, Taipei","year":2025,"date_label":"2025","photos":[{"src":"images/lab-life/polymer-society-taipei-2025-25.jpg","thumb":"images/lab-life/polymer-society-taipei-2025-25.jpg","alt":"Annual Meeting of the Polymer Society, Taipei","image_index":24,"width":1600,"height":1200}]},"christmas-gathering-january-2025":{"id":"christmas-gathering-january-2025","title":"Christmas Gathering","year":2025,"date_label":"January 2025","photos":[{"src":"images/lab-life/christmas-gathering-january-2025-08.jpg","thumb":"images/lab-life/christmas-gathering-january-2025-08.jpg","alt":"Christmas Gathering","image_index":7,"width":1600,"height":1205}]},"teachers-special-day-2024":{"id":"teachers-special-day-2024","title":"Teacher's Special Day","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/teachers-special-day-2024-26.jpg","thumb":"images/lab-life/teachers-special-day-2024-26.jpg","alt":"Teacher's Special Day","image_index":25,"width":1126,"height":845}]},"mrs-tw-2024":{"id":"mrs-tw-2024","title":"MRS-Tw Annual Conference","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/mrs-tw-2024-09.jpg","thumb":"images/lab-life/mrs-tw-2024-09.jpg","alt":"MRS-Tw Annual Conference","image_index":8,"width":1600,"height":1200}]},"icget-tw-2024":{"id":"icget-tw-2024","title":"ICGET-Tw Annual Conference","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/icget-tw-2024-27.jpg","thumb":"images/lab-life/icget-tw-2024-27.jpg","alt":"ICGET-Tw Annual Conference","image_index":26,"width":1600,"height":1205}]},"mcns-viii-2024":{"id":"mcns-viii-2024","title":"Mixed Conducting and Nonstoichiometric Compounds VIII Conference","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/mcns-viii-2024-10.jpg","thumb":"images/lab-life/mcns-viii-2024-10.jpg","alt":"Mixed Conducting and Nonstoichiometric Compounds VIII Conference","image_index":9,"width":1600,"height":1205}]},"graduate-farewell-2024":{"id":"graduate-farewell-2024","title":"Farewell Party for An-Rong and Ting-Wei","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/graduate-farewell-2024-28.jpg","thumb":"images/lab-life/graduate-farewell-2024-28.jpg","alt":"Farewell Party for An-Rong and Ting-Wei","image_index":27,"width":1600,"height":1205}]},"graduation-2024":{"id":"graduation-2024","title":"Graduation","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/graduation-2024-11.jpg","thumb":"images/lab-life/graduation-2024-11.jpg","alt":"Graduation","image_index":10,"width":1600,"height":1200}]},"imlb-2024":{"id":"imlb-2024","title":"International Meeting on Lithium Batteries","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/imlb-2024-29.jpg","thumb":"images/lab-life/imlb-2024-29.jpg","alt":"International Meeting on Lithium Batteries","image_index":28,"width":1600,"height":1205},{"src":"images/lab-life/imlb-2024-02.jpg","thumb":"images/lab-life/imlb-2024-02.jpg","alt":"International Meeting on Lithium Batteries","image_index":43,"width":1600,"height":1205}]},"hao-tien-farewell-2024":{"id":"hao-tien-farewell-2024","title":"Farewell Party for Hao-Tien","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/hao-tien-farewell-2024-12.jpg","thumb":"images/lab-life/hao-tien-farewell-2024-12.jpg","alt":"Farewell Party for Hao-Tien","image_index":11,"width":1600,"height":1205}]},"year-end-gathering-2024":{"id":"year-end-gathering-2024","title":"Lab Gathering","year":2024,"date_label":"2024","photos":[{"src":"images/lab-life/year-end-gathering-2024-30.jpg","thumb":"images/lab-life/year-end-gathering-2024-30.jpg","alt":"Lab Gathering","image_index":29,"width":1600,"height":1204}]},"twiche-2023":{"id":"twiche-2023","title":"TwIChE Annual Conference","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/twiche-2023-13.jpg","thumb":"images/lab-life/twiche-2023-13.jpg","alt":"TwIChE Annual Conference","image_index":12,"width":1600,"height":1200}]},"icget-tw-2023":{"id":"icget-tw-2023","title":"ICGET-Tw Annual Conference","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/icget-tw-2023-31.jpg","thumb":"images/lab-life/icget-tw-2023-31.jpg","alt":"ICGET-Tw Annual Conference","image_index":30,"width":1600,"height":1204}]},"teachers-day-2023":{"id":"teachers-day-2023","title":"Teachers' Day","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/teachers-day-2023-14.jpg","thumb":"images/lab-life/teachers-day-2023-14.jpg","alt":"Teachers' Day","image_index":13,"width":1600,"height":1200}]},"jannik-final-meeting-2023":{"id":"jannik-final-meeting-2023","title":"Final Meeting with Jannik","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/jannik-final-meeting-2023-32.jpg","thumb":"images/lab-life/jannik-final-meeting-2023-32.jpg","alt":"Final Meeting with Jannik","image_index":31,"width":1600,"height":1205}]},"graduate-farewell-2023":{"id":"graduate-farewell-2023","title":"Farewell Party for Chien-Ting","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/graduate-farewell-2023-15.jpg","thumb":"images/lab-life/graduate-farewell-2023-15.jpg","alt":"Farewell Party for Chien-Ting","image_index":14,"width":1600,"height":1205}]},"spring-party-2023":{"id":"spring-party-2023","title":"Spring Group Retreat","year":2023,"date_label":"2023","photos":[{"src":"images/lab-life/spring-party-2023-33.jpg","thumb":"images/lab-life/spring-party-2023-33.jpg","alt":"Spring Group Retreat","image_index":32,"width":1600,"height":1205}]},"twiche-2022":{"id":"twiche-2022","title":"TwIChE Annual Conference","year":2022,"date_label":"2022","photos":[{"src":"images/lab-life/twiche-2022-16.jpg","thumb":"images/lab-life/twiche-2022-16.jpg","alt":"TwIChE Annual Conference","image_index":15,"width":1600,"height":1200}]},"icget-tw-2022":{"id":"icget-tw-2022","title":"ICGET-Tw Annual Conference","year":2022,"date_label":"2022","photos":[{"src":"images/lab-life/icget-tw-2022-34.jpg","thumb":"images/lab-life/icget-tw-2022-34.jpg","alt":"ICGET-Tw Annual Conference","image_index":33,"width":1600,"height":1200}]},"graduate-farewell-2022":{"id":"graduate-farewell-2022","title":"Farewell Party for Ming-Yen and Tzu-Hao","year":2022,"date_label":"2022","photos":[{"src":"images/lab-life/graduate-farewell-2022-17.jpg","thumb":"images/lab-life/graduate-farewell-2022-17.jpg","alt":"Farewell Party for Ming-Yen and Tzu-Hao","image_index":16,"width":1479,"height":1109}]},"teachers-day-2022":{"id":"teachers-day-2022","title":"Teachers' Day","year":2022,"date_label":"2022","photos":[{"src":"images/lab-life/teachers-day-2022-35.jpg","thumb":"images/lab-life/teachers-day-2022-35.jpg","alt":"Teachers' Day","image_index":34,"width":1600,"height":1200}]},"year-end-group-meeting-2021":{"id":"year-end-group-meeting-2021","title":"Year-end Group Meeting","year":2021,"date_label":"2021","photos":[{"src":"images/lab-life/year-end-group-meeting-2021-36.jpg","thumb":"images/lab-life/year-end-group-meeting-2021-36.jpg","alt":"Year-end Group Meeting","image_index":35,"width":1280,"height":960}]},"teachers-day-2021":{"id":"teachers-day-2021","title":"Teachers' Day","year":2021,"date_label":"2021","photos":[{"src":"images/lab-life/teachers-day-2021-18.jpg","thumb":"images/lab-life/teachers-day-2021-18.jpg","alt":"Teachers' Day","image_index":17,"width":1600,"height":1200}]}};
 
 let labActiveAlbum=null;
@@ -1098,28 +1103,122 @@ function labAlbumOrder(onlyVisible){
  });
  return ids;
 }
-function labMovePhoto(direction){
- const album=LAB_LIFE_ALBUMS[labActiveAlbum];if(!album)return;
+document.getElementById('ll-lightbox').addEventListener('click',function(event){if(event.target===this){const r=this.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)this.close()}});
+document.addEventListener('keydown',function(event){if(!document.getElementById('ll-lightbox').open)return;if(event.key==='ArrowLeft'){event.preventDefault();labSlide(-1)}if(event.key==='ArrowRight'){event.preventDefault();labSlide(1)}});
+let labAnimating=false;
+let labPeekDirection=0;
+const LAB_GAP=12;
+function labReducedMotion(){return !!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)}
+function labStageWidth(){return document.getElementById('ll-lightbox-image').getBoundingClientRect().width||window.innerWidth}
+function labTarget(direction){
+ const album=LAB_LIFE_ALBUMS[labActiveAlbum];if(!album)return null;
  const next=labActivePhoto+direction;
- if(next>=0&&next<album.photos.length){labActivePhoto=next;labRenderPhoto();return}
+ if(next>=0&&next<album.photos.length)return{id:labActiveAlbum,index:next};
  let ids=labAlbumOrder(true);
  if(ids.indexOf(labActiveAlbum)<0)ids=labAlbumOrder(false);
  const position=ids.indexOf(labActiveAlbum);
- if(position<0||ids.length<2){labActivePhoto=(next+album.photos.length)%album.photos.length;labRenderPhoto();return}
- const target=ids[(position+(direction>0?1:-1)+ids.length)%ids.length];
- labActiveAlbum=target;
- labActivePhoto=direction>0?0:LAB_LIFE_ALBUMS[target].photos.length-1;
- labRenderPhoto();
+ if(position<0||ids.length<2)return{id:labActiveAlbum,index:(next+album.photos.length)%album.photos.length};
+ const id=ids[(position+(direction>0?1:-1)+ids.length)%ids.length];
+ return{id:id,index:direction>0?0:LAB_LIFE_ALBUMS[id].photos.length-1};
 }
-document.getElementById('ll-lightbox').addEventListener('click',function(event){if(event.target===this){const r=this.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)this.close()}});
-document.addEventListener('keydown',function(event){if(!document.getElementById('ll-lightbox').open)return;if(event.key==='ArrowLeft'){event.preventDefault();labMovePhoto(-1)}if(event.key==='ArrowRight'){event.preventDefault();labMovePhoto(1)}});
+function labMovePhoto(direction){
+ const target=labTarget(direction);if(!target)return;
+ labActiveAlbum=target.id;labActivePhoto=target.index;labRenderPhoto();
+}
+function labPreparePeek(direction){
+ const peek=document.getElementById('ll-lightbox-peek');
+ const target=labTarget(direction);
+ if(!target){peek.hidden=true;labPeekDirection=0;return false}
+ const photo=LAB_LIFE_ALBUMS[target.id].photos[target.index];
+ if(peek.getAttribute('src')!==photo.src)peek.src=photo.src;
+ peek.alt='';peek.hidden=false;labPeekDirection=direction;
+ return true;
+}
+function labSetOffset(offset,direction){
+ const image=document.getElementById('ll-lightbox-image');
+ const peek=document.getElementById('ll-lightbox-peek');
+ const width=labStageWidth();
+ image.style.transform='translateX('+offset+'px)';
+ peek.style.transform='translateX('+(direction*(width+LAB_GAP)+offset)+'px)';
+}
+function labResetStage(){
+ const image=document.getElementById('ll-lightbox-image');
+ const peek=document.getElementById('ll-lightbox-peek');
+ image.style.transition='';image.style.transform='';
+ peek.style.transition='';peek.style.transform='';peek.hidden=true;labPeekDirection=0;
+}
+function labFinish(direction,commit){
+ const image=document.getElementById('ll-lightbox-image');
+ const peek=document.getElementById('ll-lightbox-peek');
+ labAnimating=true;
+ const width=labStageWidth();
+ const ease='transform .26s cubic-bezier(.2,.8,.2,1)';
+ image.style.transition=ease;peek.style.transition=ease;
+ labSetOffset(commit?-direction*(width+LAB_GAP):0,direction);
+ setTimeout(function(){
+  if(!commit){labResetStage();labAnimating=false;return}
+  labMovePhoto(direction);
+  image.style.transition='none';image.style.transform='';
+  let done=false;
+  const finish=function(){if(done)return;done=true;labResetStage();labAnimating=false};
+  if(image.decode){image.decode().then(finish,finish);setTimeout(finish,600)}else finish();
+ },280);
+}
+function labSlide(direction){
+ if(labAnimating)return;
+ if(labReducedMotion()){labResetStage();labMovePhoto(direction);return}
+ const image=document.getElementById('ll-lightbox-image');
+ const peek=document.getElementById('ll-lightbox-peek');
+ if(!labPreparePeek(direction)){labMovePhoto(direction);return}
+ labAnimating=true;
+ image.style.transition='none';peek.style.transition='none';
+ labSetOffset(0,direction);
+ void image.offsetWidth;
+ let started=false;
+ const go=function(){if(started)return;started=true;labAnimating=false;labFinish(direction,true)};
+ if(peek.decode){peek.decode().then(go,go);setTimeout(go,400)}else go();
+}
 (function(){
- const dialog=document.getElementById('ll-lightbox');let startX=0,startY=0,tracking=false;
- dialog.addEventListener('touchstart',function(event){if(event.touches.length!==1){tracking=false;return}tracking=true;startX=event.touches[0].clientX;startY=event.touches[0].clientY},{passive:true});
- dialog.addEventListener('touchend',function(event){
-  if(!tracking)return;tracking=false;
-  const touch=event.changedTouches[0];const dx=touch.clientX-startX;const dy=touch.clientY-startY;
-  if(Math.abs(dx)>=50&&Math.abs(dx)>Math.abs(dy)*1.5)labMovePhoto(dx<0?1:-1);
+ const dialog=document.getElementById('ll-lightbox');
+ const image=document.getElementById('ll-lightbox-image');
+ const peek=document.getElementById('ll-lightbox-peek');
+ let startX=0,startY=0,startTime=0,dx=0,mode='x';
+ dialog.addEventListener('touchstart',function(event){
+  if(labAnimating||event.touches.length!==1){mode='x';return}
+  mode='';startX=event.touches[0].clientX;startY=event.touches[0].clientY;startTime=Date.now();dx=0;
+  image.style.transition='none';peek.style.transition='none';
+ },{passive:true});
+ dialog.addEventListener('touchmove',function(event){
+  if(mode==='x'||labAnimating)return;
+  const touch=event.touches[0];const moveX=touch.clientX-startX;const moveY=touch.clientY-startY;
+  if(mode===''){
+   if(Math.abs(moveX)<8&&Math.abs(moveY)<8)return;
+   mode=Math.abs(moveX)>Math.abs(moveY)*1.2?'h':'v';
+  }
+  if(mode!=='h')return;
+  dx=moveX;
+  if(labReducedMotion())return;
+  const direction=dx<0?1:-1;
+  if(direction!==labPeekDirection&&!labPreparePeek(direction))return;
+  labSetOffset(dx,direction);
+ },{passive:true});
+ dialog.addEventListener('touchend',function(){
+  const was=mode;mode='x';
+  if(was!=='h'){if(!labAnimating)labResetStage();return}
+  const distance=dx;dx=0;
+  const direction=distance<0?1:-1;
+  const width=labStageWidth();
+  const threshold=Math.min(width*0.3,120);
+  const elapsed=Math.max(Date.now()-startTime,1);
+  const flick=Math.abs(distance)/elapsed>0.45&&Math.abs(distance)>25;
+  const commit=Math.abs(distance)>=threshold||flick;
+  if(labReducedMotion()){labResetStage();if(commit)labMovePhoto(direction);return}
+  if(labPeekDirection===0&&!labPreparePeek(direction)){labResetStage();return}
+  labFinish(labPeekDirection,commit&&labPeekDirection===direction);
+ },{passive:true});
+ dialog.addEventListener('touchcancel',function(){
+  const was=mode;mode='x';dx=0;
+  if(was==='h'&&labPeekDirection!==0)labFinish(labPeekDirection,false);else if(!labAnimating)labResetStage();
  },{passive:true});
 })();
 </script>
